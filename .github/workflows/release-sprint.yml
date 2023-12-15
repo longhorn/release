@@ -1,0 +1,142 @@
+name: Release - Sprint
+
+on:
+  workflow_dispatch:
+    inputs:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_ACTION_TOKEN }}
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    strategy:
+      matrix:
+        branch_tag: [ 'master:v1.6.0' ]
+
+    steps:
+    - name: Setup Git
+      run: |
+        gh auth setup-git
+
+    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      with:
+        repository: innobead/renote
+        ref: main
+        path: renote
+    - run: cargo install --path ./renote
+
+    - id: var
+      name: Get branch, tag, milestone
+      run: |
+        IFS=':' read -ra tokens <<< "${{ matrix.branch_tag }}"
+        branch="${tokens[0]}"
+        tag="${tokens[1]}-dev+$(date '+%Y%m%d')"
+        milestone="${tokens[2]}"
+        
+        if [ -z "${tokens[2]}" ]; then milestone="${tokens[1]}" ; fi
+        
+        echo "branch=${branch}" >> $GITHUB_OUTPUT
+        echo "tag=${tag}" >> $GITHUB_OUTPUT
+        echo "milestone=${milestone}" >> $GITHUB_OUTPUT
+        
+        cat <<EOF
+        branch=${branch}
+        tag=${tag}
+        milestone=${milestone}
+        EOF
+
+    - id: pr
+      name: Create a release PR (dryrun)
+      run: |
+        renote pr \
+          --owner longhorn \
+          --repo longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --longhorn-chart-repo charts \
+          --longhorn-repos longhorn-manager \
+          --longhorn-repos longhorn-engine \
+          --longhorn-repos longhorn-instance-manager \
+          --longhorn-repos longhorn-share-manager \
+          --longhorn-repos backing-image-manager \
+          --longhorn-repos longhorn-ui \
+          --dryrun
+
+    - id: artifact
+      name: Collect artifacts
+      run: |
+        ./scripts/collect-artifacts.sh longhorn charts
+
+    - id: tag
+      name: Create a tag for each release repo
+      run: |
+        renote tag \
+          --owner longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --repos longhorn-manager \
+          --repos longhorn-engine \
+          --repos longhorn-instance-manager \
+          --repos longhorn-share-manager \
+          --repos backing-image-manager \
+          --repos longhorn-ui \
+          --repos longhorn
+
+    - id: changelog
+      name: Create a changelog from the last release
+      run: |
+        output=$(renote changelog \
+          --owner longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --repos longhorn-manager \
+          --repos longhorn-engine \
+          --repos longhorn-instance-manager \
+          --repos longhorn-share-manager \
+          --repos backing-image-manager \
+          --repos longhorn-ui \
+          --repos longhorn \
+          --markdown-folding)
+        
+        echo "$output"
+        echo "$output" >> ./assets/release-sprint/post-note.md
+
+    - id: release
+      name: Create a release
+      run: |
+        renote release \
+          --owner longhorn \
+          --repo longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --milestone ${{ steps.var.outputs.milestone }} \
+          --pre-note ./assets/release-sprint/pre-note.md \
+          --post-note ./assets/release-sprint/post-note.md \
+          --note-contributors innobead \
+          --since-days 14 \
+          --pre-hook ./scripts/check-images-ready.sh \
+          --pre-hook-args "longhornio/longhorn-manager:${{ steps.var.outputs.tag }}" \
+          --pre-hook-args "longhornio/longhorn-engine:${{ steps.var.outputs.tag }}" \
+          --pre-hook-args "longhornio/longhorn-instance-manager:${{ steps.var.outputs.tag }}" \
+          --pre-hook-args "longhornio/longhorn-share-manager:${{ steps.var.outputs.tag }}" \
+          --pre-hook-args "longhornio/backing-image-manager:${{ steps.var.outputs.tag }}" \
+          --pre-hook-args "longhornio/longhorn-ui:${{ steps.var.outputs.tag }}" \
+          --artifacts ./longhorn.yaml \
+          --artifacts ./longhorn-images.txt \
+          --artifacts ./charts.tar.gz \
+          --pre-release
+          --draft
