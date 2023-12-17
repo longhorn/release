@@ -44,7 +44,7 @@ jobs:
       run: |
         IFS=':' read -ra tokens <<< "${{ matrix.branch_tag }}"
         branch="${tokens[0]}"
-        tag="${tokens[1]}-dev+$(date '+%Y%m%d')"
+        tag="${tokens[1]}-dev-$(date '+%Y%m%d')"
         milestone="${tokens[2]}"
         
         if [ -z "${tokens[2]}" ]; then milestone="${tokens[1]}" ; fi
