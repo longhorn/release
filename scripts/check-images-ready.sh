@@ -14,7 +14,7 @@ for i in {1..20}; do
 
     echo "Inspecting (${i} time): ${img}"
     if ! skopeo inspect docker://"${img}" &>/dev/null; then
-      sleep 3s
+      sleep 5m
       continue 2
     fi
 
