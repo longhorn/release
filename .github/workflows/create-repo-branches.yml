@@ -1,0 +1,32 @@
+name: Create Longhorn Repository branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: Source branch
+        required: true
+      new_branch:
+        description: New branch
+        required: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_ACTION_TOKEN }}
+
+    steps:
+    - name: Setup Git
+      run: |
+        gh auth setup-git
+
+    - uses: actions/checkout@v4
+
+    - name: Create repo branches
+      run: ./scripts/create-repo-branches.sh ${{ inputs.source_branch }}  ${{ inputs.new_branch }}
