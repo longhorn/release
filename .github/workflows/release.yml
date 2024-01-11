@@ -1,8 +1,11 @@
-name: Release - Sprint
+name: Release
 
 on:
   workflow_dispatch:
     inputs:
+      branch_tag:
+        description: "Branch:Tag:Milestone, ex: v1.6.x:v1.6.0-rc1:v1.6.0"
+        required: true
 
 defaults:
   run:
@@ -22,10 +25,6 @@ jobs:
       contents: write
       pull-requests: write
 
-    strategy:
-      matrix:
-        branch_tag: [ 'master:v1.6.0' ]
-
     steps:
     - name: Setup Git
       run: |
@@ -42,12 +41,15 @@ jobs:
     - id: var
       name: Get branch, tag, milestone
       run: |
-        IFS=':' read -ra tokens <<< "${{ matrix.branch_tag }}"
+        IFS=':' read -ra tokens <<< "${{ inputs.branch_tag }}"
         branch="${tokens[0]}"
-        tag="${tokens[1]}-dev-$(date '+%Y%m%d')"
+        tag="${tokens[1]}"
         milestone="${tokens[2]}"
         
-        if [ -z "${tokens[2]}" ]; then milestone="${tokens[1]}" ; fi
+        if [ -z "${tokens[0]}" || -z "${tokens[1]}" || -z "${tokens[2]}" ]; then
+          echo "Branch, Tag or Milestone is empty"
+          exit 1
+        fi
         
         echo "branch=${branch}" >> $GITHUB_OUTPUT
         echo "tag=${tag}" >> $GITHUB_OUTPUT
@@ -60,7 +62,7 @@ jobs:
         EOF
 
     - id: pr
-      name: Create a release PR (dryrun)
+      name: Create a release PR (for updating the version file)
       run: |
         renote pr \
           --owner longhorn \
@@ -74,7 +76,7 @@ jobs:
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
           --longhorn-repos longhorn-ui \
-          --dryrun
+          --merge
 
     - id: artifact
       name: Collect artifacts
@@ -88,12 +90,13 @@ jobs:
           --owner longhorn \
           --branch ${{ steps.var.outputs.branch }} \
           --tag ${{ steps.var.outputs.tag }} \
-          --repos longhorn-manager \
-          --repos longhorn-engine \
-          --repos longhorn-instance-manager \
-          --repos longhorn-share-manager \
-          --repos backing-image-manager \
-          --repos longhorn-ui \
+          --create-version-file \
+          --version-file-repos longhorn-manager \
+          --version-file-repos longhorn-engine \
+          --version-file-repos longhorn-instance-manager \
+          --version-file-repos longhorn-share-manager \
+          --version-file-repos backing-image-manager \
+          --version-file-repos longhorn-ui \
           --repos longhorn
 
     - id: changelog
@@ -113,7 +116,7 @@ jobs:
           --markdown-folding)
         
         echo "$output"
-        echo "$output" >> ./assets/release-sprint/post-note.md
+        echo "$output" >> ./assets/release/post-note.md
 
     - id: release
       name: Create a release
@@ -124,10 +127,10 @@ jobs:
           --branch ${{ steps.var.outputs.branch }} \
           --tag ${{ steps.var.outputs.tag }} \
           --milestone ${{ steps.var.outputs.milestone }} \
-          --pre-note ./assets/release-sprint/pre-note.md \
-          --post-note ./assets/release-sprint/post-note.md \
+          --pre-note ./assets/release/pre-note.md \
+          --post-note ./assets/release/post-note.md \
           --note-contributors innobead \
-          --since-days 14 \
+          --since-days 365 \
           --exclude-labels "kind/backport" \
           --exclude-labels "area/infra" \
           --exclude-labels "area/ci" \
