@@ -19,6 +19,7 @@ repos=(
   "longhorn/longhorn-engine"
   "longhorn/longhorn-share-manager"
   "longhorn/backing-image-manager"
+  "longhorn/longhorn-ui"
   "longhorn/longhorn-tests"
   # "longhorn/longhorn-spdk-engine" only needed since GA
 )

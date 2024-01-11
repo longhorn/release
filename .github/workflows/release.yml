@@ -80,7 +80,7 @@ jobs:
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
           --longhorn-repos longhorn-ui \
-          --merge
+          --dryrun
 
     - id: artifact
       name: Collect artifacts
@@ -101,7 +101,8 @@ jobs:
           --version-file-repos longhorn-share-manager \
           --version-file-repos backing-image-manager \
           --version-file-repos longhorn-ui \
-          --repos longhorn
+          --repos longhorn \
+          --force
 
     - id: changelog
       name: Create a changelog from the last release
