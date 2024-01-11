@@ -32,11 +32,11 @@ mkdir -p $repos_dir
 
 pushd $repos_dir
 for repo in "${repos[@]}"; do
-  git clone git@github.com:"${repo}".git
+  gh repo clone "${repo}" -- --branch "${source_branch}"
 
   pushd "${repo##*/}"
-  git checkout -b "$new_branch" origin/"${source_branch}"
-  git push -u origin "$new_branch"
+  git checkout -b "${new_branch}"
+  git push -u origin "${new_branch}"
   popd
 done
 popd
