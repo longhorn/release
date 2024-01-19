@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       branch_tag:
-        description: "Branch:Tag:Milestone, ex: v1.6.x:v1.6.0-rc1:v1.6.0"
+        description: "Branch:Tag:Milestone:PreviousTag, ex: v1.6.x:v1.6.0-rc1:v1.6.0:v1.5.0"
         required: true
 
 defaults:
