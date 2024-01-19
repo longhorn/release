@@ -49,6 +49,7 @@ jobs:
         branch="${tokens[0]}"
         tag="${tokens[1]}"
         milestone="${tokens[2]}"
+        prev_tag="${tokens[3]:-}"
         
         if [ -z "${tokens[0]}" || -z "${tokens[1]}" || -z "${tokens[2]}" ]; then
           echo "Branch, Tag or Milestone is empty"
@@ -63,6 +64,7 @@ jobs:
         branch=${branch}
         tag=${tag}
         milestone=${milestone}
+        prev_tag=${prev_tag}
         EOF
 
     - id: pr
@@ -104,25 +106,25 @@ jobs:
           --repos longhorn \
           --force
 
-# TODO fix the change log between two tags in different branches
-#    - id: changelog
-#      name: Create a changelog from the last release
-#      run: |
-#        output=$(renote changelog \
-#          --owner longhorn \
-#          --branch ${{ steps.var.outputs.branch }} \
-#          --tag ${{ steps.var.outputs.tag }} \
-#          --repos longhorn-manager \
-#          --repos longhorn-engine \
-#          --repos longhorn-instance-manager \
-#          --repos longhorn-share-manager \
-#          --repos backing-image-manager \
-#          --repos longhorn-ui \
-#          --repos longhorn \
-#          --markdown-folding)
-#
-#        echo "$output"
-#        echo "$output" >> ./assets/release/post-note.md
+    - id: changelog
+      name: Create a changelog from the last release
+      run: |
+        output=$(renote changelog \
+          --owner longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --prev-tag ${{ steps.var.outputs.prev_tag }} \
+          --repos longhorn-manager \
+          --repos longhorn-engine \
+          --repos longhorn-instance-manager \
+          --repos longhorn-share-manager \
+          --repos backing-image-manager \
+          --repos longhorn-ui \
+          --repos longhorn \
+          --markdown-folding)
+
+        echo "$output"
+        echo "$output" >> ./assets/release/post-note.md
 
     - id: release
       name: Create a release
