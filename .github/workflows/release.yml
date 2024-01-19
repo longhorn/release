@@ -146,6 +146,7 @@ jobs:
           --exclude-labels "wontfix" \
           --exclude-labels "duplicated" \
           --exclude-labels "invalid" \
+          --exclude-labels "release/task" \
           --note-section-labels "highlight" \
           --note-section-labels "kind/feature" \
           --note-section-labels "kind/improvement" \
