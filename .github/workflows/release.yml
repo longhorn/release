@@ -59,6 +59,7 @@ jobs:
         echo "branch=${branch}" >> $GITHUB_OUTPUT
         echo "tag=${tag}" >> $GITHUB_OUTPUT
         echo "milestone=${milestone}" >> $GITHUB_OUTPUT
+        echo "prev_tag=${prev_tag}" >> $GITHUB_OUTPUT
         
         cat <<EOF
         branch=${branch}
