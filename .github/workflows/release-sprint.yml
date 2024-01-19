@@ -63,23 +63,6 @@ jobs:
         milestone=${milestone}
         EOF
 
-    - id: pr
-      name: Create a release PR (dryrun)
-      run: |
-        renote pr \
-          --owner longhorn \
-          --repo longhorn \
-          --branch ${{ steps.var.outputs.branch }} \
-          --tag ${{ steps.var.outputs.tag }} \
-          --longhorn-chart-repo charts \
-          --longhorn-repos longhorn-manager \
-          --longhorn-repos longhorn-engine \
-          --longhorn-repos longhorn-instance-manager \
-          --longhorn-repos longhorn-share-manager \
-          --longhorn-repos backing-image-manager \
-          --longhorn-repos longhorn-ui \
-          --dryrun
-
     - id: artifact
       name: Collect artifacts
       run: |
@@ -133,9 +116,13 @@ jobs:
           --note-contributors innobead \
           --since-days 14 \
           --exclude-labels "kind/backport" \
+          --exclude-labels "kind/test" \
           --exclude-labels "area/infra" \
           --exclude-labels "area/ci" \
           --exclude-labels "area/qa" \
+          --exclude-labels "wontfix" \
+          --exclude-labels "duplicated" \
+          --exclude-labels "invalid" \
           --note-section-labels "highlight" \
           --note-section-labels "kind/feature" \
           --note-section-labels "kind/improvement" \
