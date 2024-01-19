@@ -121,11 +121,10 @@ jobs:
           --repos longhorn-share-manager \
           --repos backing-image-manager \
           --repos longhorn-ui \
-          --repos longhorn \
-          --markdown-folding)
+          --repos longhorn)
 
         echo "$output"
-        echo "$output" >> ./assets/release/post-note.md
+        echo "$output" > ./changelog.md
 
     - id: release
       name: Create a release
@@ -166,5 +165,6 @@ jobs:
           --artifacts ./longhorn.yaml \
           --artifacts ./longhorn-images.txt \
           --artifacts ./charts.tar.gz \
+          --artifacts ./changelog.md \
           --pre-release \
           --draft
