@@ -83,7 +83,7 @@ jobs:
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
           --longhorn-repos longhorn-ui \
-          --dryrun
+          --merge
 
     - id: artifact
       name: Collect artifacts
