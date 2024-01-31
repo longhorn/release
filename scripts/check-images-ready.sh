@@ -20,6 +20,9 @@ for i in {1..20}; do
 
     found_images+=("$img")
   done
-
-  break
 done
+
+if [ ${#images[@]} -ne ${#found_images[@]}  ]; then
+  printf "Some images not found:\n Expected: %s\n Found: %s\n" "${images[*]}" "${found_images[*]}" > /dev/stderr
+  exit 1
+fi
