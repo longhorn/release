@@ -1,4 +1,4 @@
-name: Release
+name: Release - Preview
 
 on:
   workflow_dispatch:
@@ -82,7 +82,8 @@ jobs:
           --longhorn-repos longhorn-instance-manager \
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
-          --longhorn-repos longhorn-ui
+          --longhorn-repos longhorn-ui \
+          --merge
 
     - id: artifact
       name: Collect artifacts
@@ -103,6 +104,7 @@ jobs:
           --version-file-repos longhorn-share-manager \
           --version-file-repos backing-image-manager \
           --version-file-repos longhorn-ui \
+          --repos longhorn \
           --force
 
     - id: changelog
@@ -111,6 +113,7 @@ jobs:
         output=$(renote changelog \
           --owner longhorn \
           --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
           --prev-tag ${{ steps.var.outputs.prev_tag }} \
           --repos longhorn-manager \
           --repos longhorn-engine \
@@ -132,7 +135,7 @@ jobs:
           --branch ${{ steps.var.outputs.branch }} \
           --tag ${{ steps.var.outputs.tag }} \
           --milestone ${{ steps.var.outputs.milestone }} \
-          --pre-note ./assets/release/pre-note.md \
+          --pre-note ./assets/release-preview/pre-note.md \
           --note-contributors innobead \
           --since-days 365 \
           --exclude-labels "kind/backport" \
