@@ -138,7 +138,6 @@ jobs:
           --pre-note ./assets/release-preview/pre-note.md \
           --note-contributors innobead \
           --since-days 365 \
-          --exclude-labels "kind/backport" \
           --exclude-labels "kind/test" \
           --exclude-labels "area/infra" \
           --exclude-labels "area/ci" \

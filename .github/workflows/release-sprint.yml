@@ -115,7 +115,6 @@ jobs:
           --post-note ./assets/release-sprint/post-note.md \
           --note-contributors innobead \
           --since-days 14 \
-          --exclude-labels "kind/backport" \
           --exclude-labels "kind/test" \
           --exclude-labels "area/infra" \
           --exclude-labels "area/ci" \
