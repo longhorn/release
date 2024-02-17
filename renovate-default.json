@@ -1,0 +1,39 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "baseBranches": [
+        "master",
+	"main",
+        "v1.6.x"
+    ],
+    "semanticCommits": "enabled",
+    "semanticCommitType": "chore",
+    "semanticCommitScope": "deps",
+    "timezone": "Asia/Taipei",
+    "schedule": ["after 6pm and before 12pm every weekday", "after 10am on saturday", "on sunday"],
+    "packageRules": [
+	{
+	  "matchUpdateTypes": ["major", "minor"],
+      	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
+	  "matchManagers": ["gomod"],
+      	  "enabled": false
+	},
+        {
+          "matchBaseBranches": ["master", "main"],
+          "matchUpdateTypes": ["minor"],
+          "groupName": "minor dependencies"
+        },
+        {
+          "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
+          "matchUpdateTypes": ["patch", "digest"],
+          "groupName": "patch digest dependencies",
+	  "automerge": true
+        },
+	{
+          "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
+	  "matchDatasources": ["docker"],
+	  "groupName": "docker dependencies",
+	  "automerge": true
+        }
+    ]
+}
