@@ -20,6 +20,11 @@
 	  "matchManagers": ["gomod"],
       	  "enabled": false
 	},
+	{
+	  "matchManagers": ["github-actions"],
+	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
+	  "enabled": false
+	},
         {
           "matchBaseBranches": ["master", "main"],
           "matchUpdateTypes": ["minor"],
