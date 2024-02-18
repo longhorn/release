@@ -21,7 +21,7 @@
       	  "enabled": false
 	},
 	{
-	  "matchManagers": ["github-actions"],
+	  "matchManagers": ["github-actions", "droneci"],
 	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "enabled": false
 	},
