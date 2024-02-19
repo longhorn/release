@@ -17,7 +17,13 @@
     "schedule": ["after 6pm and before 12pm every weekday", "after 10am on saturday", "on sunday"],
     "packageRules": [
 	{
-	  "matchUpdateTypes": ["major", "minor"],
+	  "matchUpdateTypes": ["major"],
+      	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
+	  "matchManagers": ["gomod"],
+      	  "enabled": false
+	},
+	{
+	  "matchUpdateTypes": ["minor"],
       	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "matchManagers": ["gomod"],
       	  "enabled": false
