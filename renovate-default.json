@@ -17,22 +17,28 @@
     "schedule": ["after 6pm and before 12pm every weekday", "after 10am on saturday", "on sunday"],
     "packageRules": [
 	{
+	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["major"],
-      	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchManagers": ["gomod"],
       	  "enabled": false
 	},
 	{
-	  "matchUpdateTypes": ["minor"],
       	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
+	  "matchUpdateTypes": ["minor"],
 	  "matchManagers": ["gomod"],
       	  "enabled": false
 	},
 	{
-	  "matchManagers": ["github-actions", "droneci"],
 	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
+	  "matchManagers": ["github-actions", "droneci"],
 	  "enabled": false
 	},
+	{
+          "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
+	  "matchDatasources": ["docker"],
+	  "matchPackageNames": ["rancher/dapper"],
+	  "enabled": false
+        },
         {
           "matchBaseBranches": ["master", "main"],
           "matchUpdateTypes": ["minor"],
@@ -47,7 +53,6 @@
 	{
           "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchDatasources": ["docker"],
-	  "excludePackageNames": ["rancher/dapper"],
 	  "groupName": "docker dependencies",
 	  "automerge": true
         }
