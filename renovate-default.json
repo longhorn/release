@@ -41,6 +41,7 @@
 	{
           "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchDatasources": ["docker"],
+	  "excludePackageNames": ["rancher/dapper"],
 	  "groupName": "docker dependencies",
 	  "automerge": true
         }
