@@ -8,6 +8,8 @@
 	"v1.5.x",
 	"v1.4.x"
     ],
+    "automergeType": "branch",
+    "automergeMajor": false,
     "semanticCommits": "enabled",
     "semanticCommitType": "chore",
     "semanticCommitScope": "deps",
