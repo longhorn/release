@@ -73,7 +73,7 @@
 	  "automerge": true
         },
 	{
-	  "matchBaseBranches": ["master"],
+	  "matchBaseBranches": ["master", "main"],
 	  "matchPackageNames": [
 	    "github.com/longhorn/longhorn-engine",
             "github.com/longhorn/longhorn-instance-manager",
