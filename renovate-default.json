@@ -68,7 +68,7 @@
             "github.com/longhorn/longhorn-instance-manager",
             "github.com/longhorn/longhorn-share-manager"
 	  ],
-	  "allowedVersions": "master",
+	  "replacementNameTemplate": "{{{packageName}}}@master",
       	  "groupName": "longhorn dependencies"
 	},
 	{
@@ -78,7 +78,7 @@
             "github.com/longhorn/longhorn-instance-manager",
             "github.com/longhorn/longhorn-share-manager"
 	  ],
-	  "allowedVersions": "v1.6.x",
+	  "replacementNameTemplate": "{{{packageName}}}@v1.6.x",
       	  "groupName": "longhorn dependencies"
 	},
 	{
@@ -88,7 +88,7 @@
             "github.com/longhorn/longhorn-instance-manager",
             "github.com/longhorn/longhorn-share-manager"
 	  ],
-	  "allowedVersions": "v1.5.x",
+	  "replacementNameTemplate": "{{{packageName}}}@v1.5.x",
       	  "groupName": "longhorn dependencies"
 	}
     ]
