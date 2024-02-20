@@ -21,7 +21,7 @@
       	  "enabled": false
 	},
 	{
-      	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
+      	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["digest"],
 	  "excludePackageNames": [
 	    "github.com/longhorn/longhorn-engine",
