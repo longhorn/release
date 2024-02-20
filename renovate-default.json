@@ -29,6 +29,18 @@
       	  "enabled": false
 	},
 	{
+      	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
+	  "matchUpdateTypes": ["digest"],
+	  "excludePackageNames": [
+	    "github.com/longhorn/longhorn-engine",
+            "github.com/longhorn/longhorn-instance-manager",
+            "github.com/longhorn/longhorn-share-manager",
+	    "github.com/longhorn/backing-image-manager"
+	  ],
+	  "matchManagers": ["gomod"],
+      	  "enabled": false
+	},
+	{
 	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "matchManagers": ["github-actions", "droneci"],
 	  "enabled": false
