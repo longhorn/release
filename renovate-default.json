@@ -50,7 +50,7 @@
 	  "enabled": false
         },
 	{
-	  "matchBaseBranches": ["v1.6.x, v1.5.x"],
+	  "matchBaseBranches": ["v1.6.x", "v1.5.x"],
 	  "matchPackageNames": ["github.com/longhorn/go-iscsi-helper"],
 	  "matchManagers": ["gomod"],
       	  "enabled": false
