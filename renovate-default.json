@@ -5,8 +5,7 @@
         "master",
 	"main",
         "v1.6.x",
-	"v1.5.x",
-	"v1.4.x"
+	"v1.5.x"
     ],
     "automergeType": "branch",
     "automergeMajor": false,
@@ -14,7 +13,7 @@
     "semanticCommitType": "chore",
     "semanticCommitScope": "deps",
     "timezone": "Asia/Taipei",
-    "schedule": ["after 6pm and before 12pm every weekday", "after 10am on saturday", "on sunday"],
+    "schedule": ["after 6pm and before 11pm every weekday", "after 10am on saturday", "on sunday"],
     "packageRules": [
 	{
 	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
@@ -40,7 +39,7 @@
 	  "enabled": false
         },
 	{
-	  "matchBaseBranches": ["v1.6.x, v1.5.x", "v1.4.x"],
+	  "matchBaseBranches": ["v1.6.x, v1.5.x"],
 	  "matchPackageNames": ["github.com/longhorn/go-iscsi-helper"],
       	  "enabled": false
 	},
@@ -69,6 +68,7 @@
             "github.com/longhorn/longhorn-share-manager"
 	  ],
 	  "allowedVersions": "/^v1\\.6\\.\\S+/",
+	  "matchManagers": ["gomod"],
       	  "groupName": "longhorn dependencies"
 	},
 	{
@@ -79,6 +79,7 @@
             "github.com/longhorn/longhorn-share-manager"
 	  ],
 	  "allowedVersions": "/^v1\\.5\\.\\S+/",
+	  "matchManagers": ["gomod"],
       	  "groupName": "longhorn dependencies"
 	}
     ]
