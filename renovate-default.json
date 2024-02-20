@@ -21,13 +21,6 @@
       	  "enabled": false
 	},
 	{
-      	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
-	  "matchUpdateTypes": ["minor"],
-	  "excludePackagePrefixes": ["github.com/longhorn"],
-	  "matchManagers": ["gomod"],
-      	  "enabled": false
-	},
-	{
       	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["digest"],
 	  "excludePackageNames": [
@@ -37,6 +30,12 @@
 	    "github.com/longhorn/backing-image-manager"
 	  ],
 	  "matchManagers": ["gomod"],
+      	  "enabled": false
+	},
+	{
+      	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
+	  "matchUpdateTypes": ["minor"],
+	  "excludePackagePrefixes": ["github.com/longhorn"],
       	  "enabled": false
 	},
 	{
@@ -83,7 +82,7 @@
 	  ],
 	  "allowedVersions": "/^v1\\.6\\.\\S+/",
 	  "matchManagers": ["gomod"],
-      	  "groupName": "longhorn dependencies"
+      	  "groupName": "longhorn branch repo dependencies"
 	},
 	{
 	  "matchBaseBranches": ["v1.5.x"],
@@ -95,7 +94,7 @@
 	  ],
 	  "allowedVersions": "/^v1\\.5\\.\\S+/",
 	  "matchManagers": ["gomod"],
-      	  "groupName": "longhorn dependencies"
+      	  "groupName": "longhorn branch repo dependencies"
 	}
     ]
 }
