@@ -40,7 +40,7 @@
 	  "enabled": false
         },
 	{
-	  "matchBaseBranches": ["v1.5.x", "v1.4.x"],
+	  "matchBaseBranches": ["v1.6.x, v1.5.x", "v1.4.x"],
 	  "matchPackageNames": ["github.com/longhorn/go-iscsi-helper"],
       	  "enabled": false
 	},
@@ -60,6 +60,33 @@
 	  "matchDatasources": ["docker"],
 	  "groupName": "docker dependencies",
 	  "automerge": true
-        }
+        },
+	{
+	  "matchBaseBranches": ["master"],
+	  "matchPackageNames": [
+	    "github.com/longhorn/longhorn-engine@master",
+            "github.com/longhorn/longhorn-instance-manager@master",
+            "github.com/longhorn/longhorn-share-manager@master"
+	  ],
+      	  "groupName": "longhorn dependencies"
+	},
+	{
+	  "matchBaseBranches": ["v1.6.x"],
+	  "matchPackageNames": [
+	    "github.com/longhorn/longhorn-engine@v1.6.x",
+            "github.com/longhorn/longhorn-instance-manager@v1.6.x",
+            "github.com/longhorn/longhorn-share-manager@v1.6.x"
+	  ],
+      	  "groupName": "longhorn dependencies"
+	},
+	{
+	  "matchBaseBranches": ["v1.5.x"],
+	  "matchPackageNames": [
+	    "github.com/longhorn/longhorn-engine@v1.5.x",
+            "github.com/longhorn/longhorn-instance-manager@v1.5.x",
+            "github.com/longhorn/longhorn-share-manager@v1.5.x"
+	  ],
+      	  "groupName": "longhorn dependencies"
+	}
     ]
 }
