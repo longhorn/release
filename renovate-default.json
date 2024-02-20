@@ -24,6 +24,7 @@
 	{
       	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["minor"],
+	  "excludePackagePrefixes": ["github.com/longhorn"],
 	  "matchManagers": ["gomod"],
       	  "enabled": false
 	},
