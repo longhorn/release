@@ -68,7 +68,7 @@
             "github.com/longhorn/longhorn-instance-manager",
             "github.com/longhorn/longhorn-share-manager"
 	  ],
-	  "allowedVersions": "/^v1\\.6\\.\S+/",
+	  "allowedVersions": "/^v1\\.6\\.\\S+/",
       	  "groupName": "longhorn dependencies"
 	},
 	{
@@ -78,7 +78,7 @@
             "github.com/longhorn/longhorn-instance-manager",
             "github.com/longhorn/longhorn-share-manager"
 	  ],
-	  "allowedVersions": "/^v1\\.5\\.\S+/",
+	  "allowedVersions": "/^v1\\.5\\.\\S+/",
       	  "groupName": "longhorn dependencies"
 	}
     ]
