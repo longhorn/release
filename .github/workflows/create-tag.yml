@@ -1,0 +1,79 @@
+name: Dev - Create the next tag to master branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_tag:
+        description: "Branch:Tag, ex: master:v1.7.0-dev"
+        required: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_ACTION_TOKEN }}
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+    - name: Setup Git
+      run: |
+        gh auth setup-git
+
+    - run: |
+        git config --global user.email "dko@suse.com"
+        git config --global user.name "David Ko"
+
+    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      with:
+        repository: innobead/renote
+        ref: main
+        path: renote
+    - run: cargo install --path ./renote
+
+    - id: var
+      name: Get branch, tag, milestone
+      run: |
+        IFS=':' read -ra tokens <<< "${{ inputs.branch_tag }}"
+        branch="${tokens[0]}"
+        tag="${tokens[1]}"
+        
+        if [ -z "$branch" || -z "$tag" ]; then
+          echo "Branch or Tag is empty"
+          exit 1
+        fi
+        
+        echo "branch=${branch}" >> $GITHUB_OUTPUT
+        echo "tag=${tag}" >> $GITHUB_OUTPUT
+        
+        cat <<EOF
+        branch=${branch}
+        tag=${tag}
+        EOF
+
+    - id: tag
+      name: Create a tag for each release repo
+      run: |
+        renote tag \
+          --owner longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --create-version-file \
+          --version-file-repos longhorn-manager \
+          --version-file-repos longhorn-engine \
+          --version-file-repos longhorn-instance-manager \
+          --version-file-repos longhorn-share-manager \
+          --version-file-repos backing-image-manager \
+          --version-file-repos longhorn-ui \
+          --force
