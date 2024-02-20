@@ -1,4 +1,4 @@
-name: Dev - Create the next tag to master branches
+name: Create the next tag to master branches
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  release:
+  tag:
     runs-on: ubuntu-latest
 
     env:
