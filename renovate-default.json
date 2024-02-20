@@ -39,6 +39,11 @@
 	  "matchPackageNames": ["rancher/dapper"],
 	  "enabled": false
         },
+	{
+	  "matchBaseBranches": ["v1.5.x", "v1.4.x"],
+	  "matchPackageNames": ["github.com/longhorn/go-iscsi-helper"],
+      	  "enabled": false
+	},
         {
           "matchBaseBranches": ["master", "main"],
           "matchUpdateTypes": ["minor"],
