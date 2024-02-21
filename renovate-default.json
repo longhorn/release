@@ -16,14 +16,14 @@
     "schedule": ["after 6pm and before 11pm every weekday", "after 10am on saturday", "on sunday"],
     "packageRules": [
 	{
-	  "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["major"],
+	  "matchManagers": ["gomod"],
       	  "enabled": false
 	},
 	{
       	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["digest"],
-	  "excludePackageNames": [
+	  "matchPackageNames": [
 	    "github.com/longhorn/longhorn-engine",
             "github.com/longhorn/longhorn-instance-manager",
             "github.com/longhorn/longhorn-share-manager",
@@ -36,6 +36,7 @@
       	  "matchBaseBranches": ["/^v\\d+\\.\\d+\\.x/"],
 	  "matchUpdateTypes": ["minor"],
 	  "excludePackagePrefixes": ["github.com/longhorn"],
+	  "matchManagers": ["gomod"],
       	  "enabled": false
 	},
 	{
@@ -50,7 +51,7 @@
 	  "enabled": false
         },
 	{
-	  "matchBaseBranches": ["v1.6.x", "v1.5.x"],
+	  "matchBaseBranches": ["v1.5.x"],
 	  "matchPackageNames": ["github.com/longhorn/go-iscsi-helper"],
 	  "matchManagers": ["gomod"],
       	  "enabled": false
