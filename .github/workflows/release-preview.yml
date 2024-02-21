@@ -107,6 +107,24 @@ jobs:
           --repos longhorn \
           --force
 
+    - id: changelog-prev-tag
+      name: Create a changelog from the most previous tag
+      run: |
+        output=$(renote changelog \
+          --owner longhorn \
+          --branch ${{ steps.var.outputs.branch }} \
+          --tag ${{ steps.var.outputs.tag }} \
+          --repos longhorn-manager \
+          --repos longhorn-engine \
+          --repos longhorn-instance-manager \
+          --repos longhorn-share-manager \
+          --repos backing-image-manager \
+          --repos longhorn-ui \
+          --repos longhorn)
+
+        echo "$output"
+        echo "$output" > ./changelog-prev-tag.md
+
     - id: changelog
       name: Create a changelog from the last release
       run: |
@@ -166,5 +184,6 @@ jobs:
           --artifacts ./longhorn-images.txt \
           --artifacts ./charts.tar.gz \
           --artifacts ./changelog.md \
+          --artifacts ./changelog-prev-tag.md \
           --pre-release \
           --draft
