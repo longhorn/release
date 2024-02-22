@@ -7,7 +7,6 @@
         "v1.6.x",
 	"v1.5.x"
     ],
-    "automergeType": "branch",
     "automergeMajor": false,
     "semanticCommits": "enabled",
     "semanticCommitType": "chore",
@@ -65,11 +64,13 @@
         {
           "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
           "matchUpdateTypes": ["patch", "digest"],
+	  "automerge": true,
           "groupName": "patch digest dependencies"
         },
 	{
           "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchDatasources": ["docker"],
+	  "automerge": true,
 	  "groupName": "docker dependencies"
         },
 	{
