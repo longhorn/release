@@ -65,14 +65,12 @@
         {
           "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
           "matchUpdateTypes": ["patch", "digest"],
-          "groupName": "patch digest dependencies",
-	  "automerge": true
+          "groupName": "patch digest dependencies"
         },
 	{
           "matchBaseBranches": ["master", "main", "/^v\\d+\\.\\d+\\.x/"],
 	  "matchDatasources": ["docker"],
-	  "groupName": "docker dependencies",
-	  "automerge": true
+	  "groupName": "docker dependencies"
         },
 	{
 	  "matchBaseBranches": ["master", "main"],
