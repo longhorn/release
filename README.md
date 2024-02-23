@@ -19,7 +19,7 @@ For the precise steps, please refer to the workflow file for each release type.
 6. Gather artifacts, including charts.tar.gz and longhorn-images.txt.
 7. Create a tag for each branch-based repository.
 8. Generate a changelog.
-9. Create a draft release on longhorn/longhorn until branch-based images are successfully built.
+9. Create a draft release note on longhorn/longhorn until branch-based images are successfully built.
 
 *__How to do if a failure happens during the release?__*
 
