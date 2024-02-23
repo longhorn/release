@@ -15,7 +15,7 @@ For the precise steps, please refer to the workflow file for each release type.
 2. Clone this repository.
 3. Retrieve branch, tag, and milestone parameters of the planned release.
 4. Update the version file in each branch-based repository.
-5. Create a release pull request for longhorn/longhorn and longhorn/chart repositories separately.
+5. Create and merge a release pull request for longhorn/longhorn and longhorn/chart repositories separately.
 6. Gather artifacts, including charts.tar.gz and longhorn-images.txt.
 7. Create a tag for each branch-based repository.
 8. Generate a changelog.
