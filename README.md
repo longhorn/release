@@ -29,7 +29,7 @@ eliminating the need for manual intervention before rerunning the workflow, exce
 
 If any image build fails on https://drone-publish.longhorn.io/,
 which is our build service for creating and publishing Longhorn container images to Docker Hub, resolve the issue or rerun the failed build if it's flaky.
-Besides, create a ticket to follow up the flaky issue with the team.
+Additionally, create a ticket for the flaky issue and share it with the team.
 
 *__What is the next after the workflow is complete?__*
 
@@ -39,7 +39,7 @@ After the workflow is completed, the draft release is ready. Update it if necess
 
 ### Regular release
 
-Run workflow `Relesae` by providing the following parameters.
+Run the `Release` workflow by providing the following parameters.
 
 | Parameter                         | Example                           |
 | --------------------------------- | --------------------------------- |
@@ -49,7 +49,7 @@ Check [the workflow file](.github/workflows/release.yml) to understand the detai
 
 ### Preview release
 
-Run workflow `Release - Preview` by providing the following parameters.
+Run the `Release - Preview` workflow by providing the following parameters.
 
 | Parameter                         | Example                           |
 | --------------------------------- | --------------------------------- |
@@ -59,6 +59,6 @@ Check [the workflow file](.github/workflows/release-preview.yml) to understand t
 
 ### Sprint release
 
-Run workflow `Release - Preview` by providing the following parameters. This will be set to automatically run in (bi)weekly cadence.
+Run the `Release - Sprint` workflow by providing the following parameters. This will be set to automatically run on a (bi)weekly cadence.
 
 Check [the workflow file](.github/workflows/release-sprint.yml) to understand the detailed steps.
