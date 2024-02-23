@@ -3,7 +3,7 @@
 This repository is for automating Longhorn releases through GitHub actions, including regular releases, preview releases, and sprint releases.
 Additionally, it also supports some extra repository and CI operations.
 
-## Create release
+## Create a release
 
 To create a release is by running a release workflow. The common steps of each workflow are blow, but it could be slightly different for different release types.
 
