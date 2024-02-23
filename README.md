@@ -41,9 +41,9 @@ After the workflow is completed, the draft release is ready. Update it if necess
 
 Run workflow `Relesae` by providing the following parameters.
 
-| Parameter                         | Example                         |
-| --------------------------------- | ------------------------------- |
-| Branch:Tag:Milestone:PreviousTag  | v1.6.x:v1.6.0-rc1:v1.6.0:v1.5.0 |
+| Parameter                         | Example                           |
+| --------------------------------- | --------------------------------- |
+| Branch:Tag:Milestone:PreviousTag  | `v1.6.x:v1.6.0-rc1:v1.6.0:v1.5.0` |
 
 Check [the workflow file](.github/workflows/release.yml) to understand the detailed steps.
 
@@ -51,9 +51,9 @@ Check [the workflow file](.github/workflows/release.yml) to understand the detai
 
 Run workflow `Release - Preview` by providing the following parameters.
 
-| Parameter                         | Example                         |
-| --------------------------------- | ------------------------------- |
-| Branch:Tag:Milestone:PreviousTag  | v1.6.x:v1.6.0-rc1:v1.6.0:v1.5.0 |
+| Parameter                         | Example                           |
+| --------------------------------- | --------------------------------- |
+| Branch:Tag:Milestone:PreviousTag  | `v1.6.x:v1.6.0-rc1:v1.6.0:v1.5.0` |
 
 Check [the workflow file](.github/workflows/release-preview.yml) to understand the detailed steps.
 
