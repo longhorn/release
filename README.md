@@ -3,9 +3,10 @@
 This repository is for automating Longhorn releases through GitHub actions, including regular releases, preview releases, and sprint releases.
 Additionally, it also supports some extra repository and CI operations.
 
-## Create a release
+## Release Process
 
-To create a release is by running a release workflow. The common steps of each workflow are blow, but it could be slightly different for different release types.
+To create a release, run a release workflow. The common steps for each workflow are outlined below, though they may vary slightly for different release types.
+For the precise steps, please refer to the workflow file for each release type.
 
 1. Set up the git environment.
 2. Clone this repository.
@@ -30,6 +31,8 @@ Besides, create a ticket to follow up the flaky issue with the team.
 *__What is the next after the workflow is complete?__*
 
 After the workflow is completed, the draft release is ready. Update it if necessary, and publish it as a preview or regular release if it's generally available.
+
+## Create a Release
 
 ### Regular release
 
