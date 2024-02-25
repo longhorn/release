@@ -10,6 +10,11 @@
     "v1.5.x"
   ],
   "automergeMajor": false,
+  "dockerfile": {
+    "fileMatch": [
+      "Dockerfile.dapper"
+    ]
+  },
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps",
