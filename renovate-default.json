@@ -71,9 +71,6 @@
       "excludePackagePrefixes": [
         "github.com/longhorn"
       ],
-      "matchManagers": [
-        "gomod"
-      ],
       "enabled": false
     },
     {
