@@ -102,7 +102,7 @@
         "v1.5.x"
       ],
       "matchPackageNames": [
-        "github.com/longhorn/go-iscsi-helper"
+        "github.com/rancher/lasso"
       ],
       "matchManagers": [
         "gomod"
