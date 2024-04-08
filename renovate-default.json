@@ -18,10 +18,9 @@
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps",
-  "prHourlyLimit": 4,
+  "prHourlyLimit": 12,
   "timezone": "Asia/Taipei",
   "schedule": [
-    "after 6pm and before 11pm every weekday",
     "after 10am on saturday",
     "on sunday"
   ],
