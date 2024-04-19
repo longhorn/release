@@ -82,7 +82,8 @@ jobs:
           --longhorn-repos longhorn-instance-manager \
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
-          --longhorn-repos longhorn-ui
+          --longhorn-repos longhorn-ui \
+          --merge
 
     - id: artifact
       name: Collect artifacts
