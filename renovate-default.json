@@ -24,6 +24,7 @@
     "after 10am on saturday",
     "on sunday"
   ],
+  "postUpdateOptions": ["gomodTidy"],
   "packageRules": [
     {
       "matchUpdateTypes": [
