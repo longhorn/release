@@ -99,6 +99,18 @@
     },
     {
       "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchPackageNames": [
+        "github.com/rancher/lasso"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
         "master",
         "main"
       ],
