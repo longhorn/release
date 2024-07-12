@@ -24,7 +24,7 @@ jobs:
 
     strategy:
       matrix:
-        branch_tag: ['master:v1.7.0']
+        branch_tag: [ 'master:v1.7.0' ]
 
     steps:
     - name: Setup Git
@@ -50,13 +50,13 @@ jobs:
         branch="${tokens[0]}"
         tag="${tokens[1]}-dev-$(date '+%Y%m%d')"
         milestone="${tokens[2]}"
-
+        
         if [ -z "${tokens[2]}" ]; then milestone="${tokens[1]}" ; fi
-
+        
         echo "branch=${branch}" >> $GITHUB_OUTPUT
         echo "tag=${tag}" >> $GITHUB_OUTPUT
         echo "milestone=${milestone}" >> $GITHUB_OUTPUT
-
+        
         cat <<EOF
         branch=${branch}
         tag=${tag}
@@ -81,7 +81,6 @@ jobs:
           --repos longhorn-share-manager \
           --repos backing-image-manager \
           --repos longhorn-ui \
-          --repos cli \
           --repos longhorn
 
     - id: changelog
@@ -97,10 +96,9 @@ jobs:
           --repos longhorn-share-manager \
           --repos backing-image-manager \
           --repos longhorn-ui \
-          --repos cli \
           --repos longhorn \
           --markdown-folding)
-
+        
         echo "$output"
         echo "$output" >> ./assets/release-sprint/post-note.md
 
@@ -141,7 +139,6 @@ jobs:
           --pre-hook-args "longhornio/longhorn-share-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/backing-image-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/longhorn-ui:${{ steps.var.outputs.tag }}" \
-          --pre-hook-args "longhornio/cli:${{ steps.var.outputs.tag }}" \
           --artifacts ./longhorn.yaml \
           --artifacts ./longhorn-images.txt \
           --artifacts ./charts.tar.gz \
