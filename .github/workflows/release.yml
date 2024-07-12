@@ -163,7 +163,7 @@ jobs:
           --pre-hook-args "longhornio/longhorn-share-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/backing-image-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/longhorn-ui:${{ steps.var.outputs.tag }}" \
-          --pre-hook-args "longhornio/cli:${{ steps.var.outputs.tag }}" \
+          --pre-hook-args "longhornio/longhorn-cli:${{ steps.var.outputs.tag }}" \
           --artifacts ./longhorn.yaml \
           --artifacts ./longhorn-images.txt \
           --artifacts ./charts.tar.gz \
