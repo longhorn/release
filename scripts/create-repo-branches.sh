@@ -21,7 +21,6 @@ repos=(
   "longhorn/backing-image-manager"
   "longhorn/longhorn-ui"
   "longhorn/longhorn-tests"
-  "longhorn/cli"
   # "longhorn/longhorn-spdk-engine" only needed since GA
 )
 

@@ -50,17 +50,17 @@ jobs:
         tag="${tokens[1]}"
         milestone="${tokens[2]}"
         prev_tag="${tokens[3]:-}"
-
+        
         if [ -z "${tokens[0]}" || -z "${tokens[1]}" || -z "${tokens[2]}" ]; then
           echo "Branch, Tag or Milestone is empty"
           exit 1
         fi
-
+        
         echo "branch=${branch}" >> $GITHUB_OUTPUT
         echo "tag=${tag}" >> $GITHUB_OUTPUT
         echo "milestone=${milestone}" >> $GITHUB_OUTPUT
         echo "prev_tag=${prev_tag}" >> $GITHUB_OUTPUT
-
+        
         cat <<EOF
         branch=${branch}
         tag=${tag}
@@ -83,7 +83,6 @@ jobs:
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
           --longhorn-repos longhorn-ui \
-          --longhorn-repos cli \
           --merge
 
     - id: artifact
@@ -105,7 +104,6 @@ jobs:
           --version-file-repos longhorn-share-manager \
           --version-file-repos backing-image-manager \
           --version-file-repos longhorn-ui \
-          --version-file-repos cli \
           --repos longhorn \
           --force
 
@@ -122,7 +120,6 @@ jobs:
           --repos longhorn-share-manager \
           --repos backing-image-manager \
           --repos longhorn-ui \
-          --repos cli \
           --repos longhorn)
 
         echo "$output"
@@ -142,7 +139,6 @@ jobs:
           --repos longhorn-share-manager \
           --repos backing-image-manager \
           --repos longhorn-ui \
-          --repos cli \
           --repos longhorn)
 
         echo "$output"
@@ -184,7 +180,6 @@ jobs:
           --pre-hook-args "longhornio/longhorn-share-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/backing-image-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/longhorn-ui:${{ steps.var.outputs.tag }}" \
-          --pre-hook-args "longhornio/cli:${{ steps.var.outputs.tag }}" \
           --artifacts ./longhorn.yaml \
           --artifacts ./longhorn-images.txt \
           --artifacts ./charts.tar.gz \

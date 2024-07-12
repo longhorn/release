@@ -48,14 +48,15 @@ jobs:
         IFS=':' read -ra tokens <<< "${{ inputs.branch_tag }}"
         branch="${tokens[0]}"
         tag="${tokens[1]}"
+        
         if [ -z "$branch" || -z "$tag" ]; then
           echo "Branch or Tag is empty"
           exit 1
         fi
-
+        
         echo "branch=${branch}" >> $GITHUB_OUTPUT
         echo "tag=${tag}" >> $GITHUB_OUTPUT
-
+        
         cat <<EOF
         branch=${branch}
         tag=${tag}
@@ -75,5 +76,4 @@ jobs:
           --version-file-repos longhorn-share-manager \
           --version-file-repos backing-image-manager \
           --version-file-repos longhorn-ui \
-          --version-file-repos cli \
           --force
