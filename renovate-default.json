@@ -6,6 +6,7 @@
   "baseBranches": [
     "master",
     "main",
+    "v1.7.x",
     "v1.6.x",
     "v1.5.x"
   ],
@@ -152,7 +153,25 @@
         "github.com/longhorn/longhorn-engine",
         "github.com/longhorn/longhorn-instance-manager",
         "github.com/longhorn/longhorn-share-manager",
-        "github.com/longhorn/backing-image-manager"
+        "github.com/longhorn/backing-image-manager",
+        "github.com/longhorn/cli"
+      ],
+      "allowedVersions": "/^v1\\.8\\.\\S+/",
+      "matchManagers": [
+        "gomod"
+      ],
+      "groupName": "longhorn branch repo dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "v1.7.x"
+      ],
+      "matchPackageNames": [
+        "github.com/longhorn/longhorn-engine",
+        "github.com/longhorn/longhorn-instance-manager",
+        "github.com/longhorn/longhorn-share-manager",
+        "github.com/longhorn/backing-image-manager",
+        "github.com/longhorn/cli"
       ],
       "allowedVersions": "/^v1\\.7\\.\\S+/",
       "matchManagers": [
