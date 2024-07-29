@@ -31,11 +31,14 @@ jobs:
       run: |
         gh auth setup-git
 
+    - uses: anchore/sbom-action/download-syft
+
     - run: |
         git config --global user.email "dko@suse.com"
         git config --global user.name "David Ko"
 
     - uses: actions/checkout@v4
+
     - uses: actions/checkout@v4
       with:
         repository: innobead/renote
@@ -145,5 +148,6 @@ jobs:
           --artifacts ./longhorn.yaml \
           --artifacts ./longhorn-images.txt \
           --artifacts ./charts.tar.gz \
+          --artifacts ./longhorn-images-sbom.tar.gz \
           --pre-release \
           --draft

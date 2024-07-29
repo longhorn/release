@@ -34,7 +34,7 @@ for repo in "${repos[@]}"; do
   gh repo clone "${repo}"
 
   pushd "${repo##*/}"
-  echo ${version} > version
+  echo ${version} >version
   git add version
   git commit -s -m "chore(version): update version file to ${version}"
   git push -u origin HEAD
