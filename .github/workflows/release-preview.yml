@@ -86,7 +86,7 @@ jobs:
           --longhorn-repos longhorn-share-manager \
           --longhorn-repos backing-image-manager \
           --longhorn-repos longhorn-ui \
-          --longhorn-repos cli \
+          --longhorn-repos cli:longhorn-cli \
           --merge
 
     - id: artifact
