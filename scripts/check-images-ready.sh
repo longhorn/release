@@ -44,4 +44,5 @@ function generate_sbom_for_images() {
 }
 
 check_images_ready
-generate_sbom_for_images
+#SBOM generation is disabled for now, because it's supported by https://github.com/longhorn/longhorn/blob/master/.github/workflows/generate-sbom.yml already
+#generate_sbom_for_images
