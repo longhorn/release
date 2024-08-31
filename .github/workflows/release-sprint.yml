@@ -91,6 +91,7 @@ jobs:
       name: Create a changelog from the last release
       run: |
         output=$(renote changelog \
+          --log-level error \
           --owner longhorn \
           --branch ${{ steps.var.outputs.branch }} \
           --tag ${{ steps.var.outputs.tag }} \
