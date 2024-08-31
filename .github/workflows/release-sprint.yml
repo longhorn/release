@@ -120,6 +120,7 @@ jobs:
           --pre-note ./assets/release-sprint/pre-note.md \
           --post-note ./assets/release-sprint/post-note.md \
           --note-contributors innobead \
+          --note-section-disable \
           --since-days 14 \
           --exclude-labels "kind/test" \
           --exclude-labels "area/infra" \
@@ -129,15 +130,6 @@ jobs:
           --exclude-labels "duplicated" \
           --exclude-labels "invalid" \
           --exclude-labels "release/task" \
-          --note-section-labels "highlight" \
-          --note-section-labels "kind/feature" \
-          --note-section-labels "kind/improvement" \
-          --note-section-labels "kind/bug" \
-          --note-section-labels "area/performance" \
-          --note-section-labels "area/resilience" \
-          --note-section-labels "area/stability" \
-          --note-section-labels "area/scalability" \
-          --note-section-labels "area/benchmark" \
           --pre-hook ./scripts/check-images-ready.sh \
           --pre-hook-args "longhornio/longhorn-manager:${{ steps.var.outputs.tag }}" \
           --pre-hook-args "longhornio/longhorn-engine:${{ steps.var.outputs.tag }}" \
