@@ -144,7 +144,6 @@ jobs:
           --log-level error \
           --owner longhorn \
           --branch "${{ steps.var.outputs.branch }}" \
-          --tag "${{ steps.var.outputs.tag }}" \
           --prev-tag "${{ steps.var.outputs.prev_tag }}" \
           $(printf -- '--repos %s ' "${repos[@]}"))
         echo "$output"
