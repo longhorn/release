@@ -74,7 +74,7 @@ jobs:
       run: |
         gh auth setup-git
 
-    - uses: anchore/sbom-action/download-syft@v0.17.2
+    - uses: anchore/sbom-action/download-syft@v0.17.3
       if: steps.check_sprint_build_required.outcome == 'success'
 
     - run: |
