@@ -8,7 +8,6 @@
     "main",
     "v1.7.x",
     "v1.6.x",
-    "v1.5.x"
   ],
   "automergeMajor": false,
   "dockerfile": {
@@ -190,22 +189,6 @@
         "github.com/longhorn/backing-image-manager"
       ],
       "allowedVersions": "/^v1\\.6\\.\\S+/",
-      "matchManagers": [
-        "gomod"
-      ],
-      "groupName": "longhorn branch repo dependencies"
-    },
-    {
-      "matchBaseBranches": [
-        "v1.5.x"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/longhorn-engine",
-        "github.com/longhorn/longhorn-instance-manager",
-        "github.com/longhorn/longhorn-share-manager",
-        "github.com/longhorn/backing-image-manager"
-      ],
-      "allowedVersions": "/^v1\\.5\\.\\S+/",
       "matchManagers": [
         "gomod"
       ],
