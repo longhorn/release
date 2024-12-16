@@ -163,24 +163,6 @@
     },
     {
       "matchBaseBranches": [
-        "master",
-        "main"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/go-common-libs",
-        "github.com/longhorn/go-iscsi-helper",
-        "github.com/longhorn/go-spdk-helper",
-        "github.com/longhorn/sparse-tools",
-        "github.com/longhorn/backupstore"
-      ],
-      "matchPackageNames": [
-        "go"
-      ],
-      "allowedVersions": "<=1.22",
-      "groupName": "longhorn shared lib repo go-version update"
-    },
-    {
-      "matchBaseBranches": [
         "v1.7.x"
       ],
       "matchPackageNames": [
@@ -193,8 +175,7 @@
       "matchPackageNames": [
         "go"
       ],
-      "allowedVersions": "<=1.22",
-      "groupName": "longhorn branch repo go-version update"
+      "allowedVersions": "<=1.22"
     },
     {
       "matchBaseBranches": [
@@ -226,8 +207,7 @@
       "matchPackageNames": [
         "go"
       ],
-      "allowedVersions": "<=1.22",
-      "groupName": "longhorn branch repo go-version update"
+      "allowedVersions": "<=1.22"
     },
     {
       "matchBaseBranches": [
