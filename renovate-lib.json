@@ -1,0 +1,65 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "baseBranches": [
+    "master",
+    "main"
+  ],
+  "dockerfile": {
+    "fileMatch": [
+      "Dockerfile.dapper"
+    ]
+  },
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "prHourlyLimit": 12,
+  "timezone": "Asia/Taipei",
+  "schedule": [
+    "after 10am on saturday",
+    "on sunday"
+  ],
+  "postUpdateOptions": ["gomodTidy"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "major",
+        "minor"
+      ],
+      "enabled": false
+    },
+    {
+      "matchUpdateTypes": [
+        "major",
+        "minor"
+      ],
+      "matchManagers": [
+        "gomod",
+        "dockerfile"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "patch",
+        "digest"
+      ],
+      "automerge": true,
+      "groupName": "patch digest dependencies"
+    },
+    {
+      "matchPackageNames": [
+        "go"
+      ],
+      "allowedVersions": "<=1.22"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "automerge": true,
+      "groupName": "docker dependencies"
+    }
+  ]
+}
