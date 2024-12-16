@@ -190,11 +190,11 @@
         "github.com/longhorn/backing-image-manager",
         "github.com/longhorn/cli"
       ],
-      "matchPackageNames": [
-        "go"
+      "allowedVersions": "/^v1\\.7\\.\\S+/",
+      "matchManagers": [
+        "gomod"
       ],
-      "allowedVersions": "<=1.22",
-      "groupName": "longhorn branch repo go-version update"
+      "groupName": "longhorn branch repo dependencies"
     },
     {
       "matchBaseBranches": [
@@ -206,22 +206,6 @@
         "github.com/longhorn/longhorn-share-manager",
         "github.com/longhorn/backing-image-manager",
         "github.com/longhorn/cli"
-      ],
-      "allowedVersions": "/^v1\\.7\\.\\S+/",
-      "matchManagers": [
-        "gomod"
-      ],
-      "groupName": "longhorn branch repo dependencies"
-    },
-    {
-      "matchBaseBranches": [
-        "v1.6.x"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/longhorn-engine",
-        "github.com/longhorn/longhorn-instance-manager",
-        "github.com/longhorn/longhorn-share-manager",
-        "github.com/longhorn/backing-image-manager"
       ],
       "matchPackageNames": [
         "go"
@@ -244,6 +228,22 @@
         "gomod"
       ],
       "groupName": "longhorn branch repo dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "v1.6.x"
+      ],
+      "matchPackageNames": [
+        "github.com/longhorn/longhorn-engine",
+        "github.com/longhorn/longhorn-instance-manager",
+        "github.com/longhorn/longhorn-share-manager",
+        "github.com/longhorn/backing-image-manager"
+      ],
+      "matchPackageNames": [
+        "go"
+      ],
+      "allowedVersions": "<=1.22",
+      "groupName": "longhorn branch repo go-version update"
     }
   ]
 }
