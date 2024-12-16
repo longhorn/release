@@ -91,6 +91,21 @@
     },
     {
       "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "matchPackageNames": [
+        "github.com/longhorn/longhorn-spdk-engine"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
         "master",
         "main"
       ],
