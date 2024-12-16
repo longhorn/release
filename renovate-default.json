@@ -163,16 +163,6 @@
     },
     {
       "matchBaseBranches": [
-        "v1.7.x",
-        "v1.6.x"
-      ],
-      "matchPackageNames": [
-        "go"
-      ],
-      "allowedVersions": "<=1.22"
-    },
-    {
-      "matchBaseBranches": [
         "v1.7.x"
       ],
       "matchPackageNames": [
