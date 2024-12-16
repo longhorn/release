@@ -30,7 +30,7 @@ jobs:
       run: |
         gh auth setup-git
 
-    - uses: anchore/sbom-action/download-syft@v0.17.7
+    - uses: anchore/sbom-action/download-syft@v0.17.9
 
     - run: |
         git config --global user.email "dko@suse.com"
