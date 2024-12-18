@@ -97,7 +97,8 @@
         "digest"
       ],
       "matchPackageNames": [
-        "github.com/longhorn/longhorn-spdk-engine"
+        "github.com/longhorn/longhorn-spdk-engine",
+        "github.com/longhorn/go-spdk-helper"
       ],
       "matchManagers": [
         "gomod"
