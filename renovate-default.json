@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "security:openssf-scorecard"
   ],
   "baseBranches": [
     "master",
@@ -25,6 +26,10 @@
     "on sunday"
   ],
   "postUpdateOptions": ["gomodTidy"],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true
+  },
   "packageRules": [
     {
       "matchUpdateTypes": [
