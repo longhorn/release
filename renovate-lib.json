@@ -22,6 +22,9 @@
     "on sunday"
   ],
   "postUpdateOptions": ["gomodTidy"],
+  "vulnerabilityAlerts": {
+    "automerge": true
+  },
   "packageRules": [
     {
       "matchUpdateTypes": [
