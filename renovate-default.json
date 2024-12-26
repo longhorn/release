@@ -47,15 +47,6 @@
       ]
     },
     {
-      "matchPackageNames": [
-        "github.com/longhorn/types"
-      ],
-      "matchManagers": [
-        "gomod"
-      ],
-      "enabled": false
-    },
-    {
       "matchBaseBranches": [
         "/^v\\d+\\.\\d+\\.x/"
       ],
