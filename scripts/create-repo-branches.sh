@@ -22,6 +22,7 @@ repos=(
   "longhorn/longhorn-ui"
   "longhorn/longhorn-tests"
   "longhorn/cli"
+  "longhorn/dep-versions"
   # "longhorn/longhorn-spdk-engine" only needed since GA
 )
 
