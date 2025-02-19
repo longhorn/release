@@ -30,8 +30,6 @@ jobs:
       run: |
         gh auth setup-git
 
-    - uses: anchore/sbom-action/download-syft@v0.18.0
-
     - run: |
         git config --global user.email "dko@suse.com"
         git config --global user.name "David Ko"
@@ -219,7 +217,6 @@ jobs:
           --artifacts ./charts.tar.gz
           --artifacts ./changelog.md
           --artifacts ./changelog-prev-tag.md
-          --artifacts ./longhorn-images-sbom.tar.gz
           --pre-release
           --draft
         )
