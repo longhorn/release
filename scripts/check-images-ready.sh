@@ -29,20 +29,4 @@ function check_images_ready() {
   fi
 }
 
-function generate_sbom_for_images() {
-  for img in "${images[@]}"; do
-    echo "Generating ${img} SBOM and checksum"
-
-    sbom_name="${img##*/}".sbom
-
-    syft "$img" -o spdx-json >"$sbom_name"
-    sha256sum "$sbom_name" >"$sbom_name".sha256
-  done
-
-  find . \( -name "*.sbom" -o -name "*.sbom.sha256" \) -print0 | tar --null -zcvf "longhorn-images-sbom.tar.gz" --files-from -
-  tar -tvf longhorn-images-sbom.tar.gz
-}
-
 check_images_ready
-#SBOM generation is disabled for now, because it's supported by https://github.com/longhorn/longhorn/blob/master/.github/workflows/generate-sbom.yml already
-#generate_sbom_for_images
