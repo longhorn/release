@@ -84,6 +84,7 @@ jobs:
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
           --longhorn-repos longhorn-ui
+          --longhorn-repos dep-versions
           --merge
         )
 
@@ -112,6 +113,7 @@ jobs:
           --version-file-repos longhorn-share-manager
           --version-file-repos backing-image-manager
           --version-file-repos longhorn-ui
+          --version-file-repos dep-versions
           --force
         )
 
