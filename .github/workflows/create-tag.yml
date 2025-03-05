@@ -76,4 +76,5 @@ jobs:
           --version-file-repos backing-image-manager \
           --version-file-repos longhorn-ui \
           --version-file-repos cli \
+          --version-file-repos dep-versions \
           --force

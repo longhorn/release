@@ -165,6 +165,7 @@ jobs:
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
           --longhorn-repos longhorn-ui
+          --longhorn-repos dep-versions
           --dryrun
         )
 
@@ -194,6 +195,7 @@ jobs:
           --repos longhorn-share-manager
           --repos backing-image-manager
           --repos longhorn-ui
+          --repos dep-versions
           --repos longhorn
         )
 
