@@ -103,6 +103,7 @@ jobs:
                "backing-image-manager"
                "longhorn-ui"
                "longhorn")
+        
         if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
           repos+=("cli")
         fi
@@ -165,12 +166,15 @@ jobs:
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
           --longhorn-repos longhorn-ui
-          --longhorn-repos dep-versions
           --dryrun
         )
 
         if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
           common_args+=(--longhorn-repos cli:longhorn-cli)
+        fi
+        
+        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x"]]; then
+          common_args+=(--longhorn-repos dep-versions)
         fi
 
         renote pr "${common_args[@]}"
@@ -195,12 +199,15 @@ jobs:
           --repos longhorn-share-manager
           --repos backing-image-manager
           --repos longhorn-ui
-          --repos dep-versions
           --repos longhorn
         )
 
         if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
           common_args+=(--repos cli)
+        fi
+        
+        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x" ]]; then
+          common_args+=(--repos dep-versions)
         fi
 
         renote tag "${common_args[@]}"
