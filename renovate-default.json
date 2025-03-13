@@ -212,6 +212,28 @@
         "gomod"
       ],
       "groupName": "longhorn branch repo dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "v1.7.x",
+        "v1.6.x"
+      ],
+      "matchPackageNames": [
+        "github.com/longhorn/types"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "matchPackagePatterns": [
+        "^github.com/longhorn/longhorn-engine$",
+        "^github.com/longhorn/longhorn-instance-manager$",
+        "^github.com/longhorn/longhorn-share-manager$",
+        "^github.com/longhorn/backing-image-manager$"
+      ],
+      "enabled": false
     }
   ]
 }
