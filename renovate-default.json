@@ -227,12 +227,6 @@
       "matchDepTypes": [
         "dependencies"
       ],
-      "matchPackagePatterns": [
-        "^github.com/longhorn/longhorn-engine$",
-        "^github.com/longhorn/longhorn-instance-manager$",
-        "^github.com/longhorn/longhorn-share-manager$",
-        "^github.com/longhorn/backing-image-manager$"
-      ],
       "enabled": false
     }
   ]
