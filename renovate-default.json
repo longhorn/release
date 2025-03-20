@@ -23,8 +23,7 @@
   "prHourlyLimit": 12,
   "timezone": "Asia/Taipei",
   "schedule": [
-    "after 10am on saturday",
-    "on sunday"
+    "after 1pm on sunday"
   ],
   "postUpdateOptions": ["gomodTidy"],
   "vulnerabilityAlerts": {

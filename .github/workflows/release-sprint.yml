@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
   schedule:
-    - cron: '0 1 * * 0' # every Sunday at 01:00
+    - cron: '0 1 * * 0' # every Sunday at 01:00 UTC (Asia/Taipei 09:00)
 
 defaults:
   run:
