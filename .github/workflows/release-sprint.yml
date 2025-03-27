@@ -173,7 +173,7 @@ jobs:
           common_args+=(--longhorn-repos cli:longhorn-cli)
         fi
         
-        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x"]]; then
+        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x" ]]; then
           common_args+=(--longhorn-repos dep-versions)
         fi
 
