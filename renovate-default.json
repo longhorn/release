@@ -8,9 +8,7 @@
     "master",
     "main",
     "v1.9.x",
-    "v1.8.x",
-    "v1.7.x",
-    "v1.6.x"
+    "v1.8.x"
   ],
   "automergeMajor": false,
   "dockerfile": {
@@ -196,55 +194,6 @@
         "gomod"
       ],
       "groupName": "longhorn branch repo dependencies"
-    },
-    {
-      "matchBaseBranches": [
-        "v1.7.x"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/longhorn-engine",
-        "github.com/longhorn/longhorn-instance-manager",
-        "github.com/longhorn/longhorn-share-manager",
-        "github.com/longhorn/backing-image-manager",
-        "github.com/longhorn/cli"
-      ],
-      "allowedVersions": "/^v1\\.7\\.\\S+/",
-      "matchManagers": [
-        "gomod"
-      ],
-      "groupName": "longhorn branch repo dependencies"
-    },
-    {
-      "matchBaseBranches": [
-        "v1.6.x"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/longhorn-engine",
-        "github.com/longhorn/longhorn-instance-manager",
-        "github.com/longhorn/longhorn-share-manager",
-        "github.com/longhorn/backing-image-manager"
-      ],
-      "allowedVersions": "/^v1\\.6\\.\\S+/",
-      "matchManagers": [
-        "gomod"
-      ],
-      "groupName": "longhorn branch repo dependencies"
-    },
-    {
-      "matchBaseBranches": [
-        "v1.7.x",
-        "v1.6.x"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/types"
-      ],
-      "matchManagers": [
-        "gomod"
-      ],
-      "matchDepTypes": [
-        "dependencies"
-      ],
-      "enabled": false
     }
   ]
 }
