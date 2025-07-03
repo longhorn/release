@@ -84,16 +84,10 @@ jobs:
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
           --longhorn-repos longhorn-ui
+          --longhorn-repos dep-versions
+          --longhorn-repos cli:longhorn-cli
           --merge
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          common_args+=(--longhorn-repos cli:longhorn-cli)
-        fi
-        
-        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x" ]]; then
-          common_args+=(--longhorn-repos dep-versions)
-        fi
 
         renote pr "${common_args[@]}"
 
@@ -116,16 +110,10 @@ jobs:
           --version-file-repos longhorn-share-manager
           --version-file-repos backing-image-manager
           --version-file-repos longhorn-ui
+          --version-file-repos cli
+          --version-file-repos dep-versions
           --force
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          common_args+=(--version-file-repos cli)
-        fi
-        
-        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x" ]]; then
-          common_args+=(--version-file-repos dep-versions)
-        fi
 
         renote tag "${common_args[@]}"
 
@@ -140,11 +128,8 @@ jobs:
           backing-image-manager
           longhorn-ui
           longhorn
+          cli
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          repos+=(cli)
-        fi
 
         output=$(renote changelog \
           --log-level error \
@@ -191,6 +176,7 @@ jobs:
           --pre-hook-args "longhornio/longhorn-share-manager:${{ steps.var.outputs.tag }}"
           --pre-hook-args "longhornio/backing-image-manager:${{ steps.var.outputs.tag }}"
           --pre-hook-args "longhornio/longhorn-ui:${{ steps.var.outputs.tag }}"
+          --pre-hook-args "longhornio/longhorn-cli:${{ steps.var.outputs.tag }}"
           --artifacts ./longhorn.yaml
           --artifacts ./longhorn-images.txt
           --artifacts ./charts.tar.gz
@@ -198,9 +184,5 @@ jobs:
           --pre-release
           --draft
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          common_args+=(--pre-hook-args "longhornio/longhorn-cli:${{ steps.var.outputs.tag }}")
-        fi
 
         renote release "${common_args[@]}"

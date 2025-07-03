@@ -26,7 +26,7 @@ jobs:
 
     strategy:
       matrix:
-        branch_tag: ['master:v1.10.0', 'v1.9.x:v1.9.1', 'v1.8.x:v1.8.3', 'v1.7.x:v1.7.4', 'v1.6.x:v1.6.5']
+        branch_tag: ['master:v1.10.0', 'v1.9.x:v1.9.1', 'v1.8.x:v1.8.3']
 
     steps:
     - name: Install dependencies
@@ -102,12 +102,9 @@ jobs:
                "longhorn-share-manager"
                "backing-image-manager"
                "longhorn-ui"
-               "longhorn")
+               "longhorn",
+               "cli")
         
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          repos+=("cli")
-        fi
-
         for repo in "${repos[@]}"; do
           exists=$(gh api "repos/longhorn/${repo}/git/refs/tags/${{ steps.var.outputs.prev_tag }}" > /dev/null 2>&1; echo $?)
           echo "Tag ${{ steps.var.outputs.prev_tag }} already exists: ${exists}"
@@ -166,16 +163,10 @@ jobs:
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
           --longhorn-repos longhorn-ui
+          --longhorn-repos cli:longhorn-cli
+          --longhorn-repos dep-versions
           --dryrun
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          common_args+=(--longhorn-repos cli:longhorn-cli)
-        fi
-        
-        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x" ]]; then
-          common_args+=(--longhorn-repos dep-versions)
-        fi
 
         renote pr "${common_args[@]}"
 
@@ -200,15 +191,9 @@ jobs:
           --repos backing-image-manager
           --repos longhorn-ui
           --repos longhorn
+          --repos cli
+          --repos dep-versions
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          common_args+=(--repos cli)
-        fi
-        
-        if [[ "${{ steps.var.outputs.branch }}" != "v1.6.x" && "${{ steps.var.outputs.branch }}" != "v1.7.x" ]]; then
-          common_args+=(--repos dep-versions)
-        fi
 
         renote tag "${common_args[@]}"
 
@@ -224,11 +209,8 @@ jobs:
           backing-image-manager
           longhorn-ui
           longhorn
+          cli
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          repos+=(cli)
-        fi
 
         output=$(renote changelog \
           --log-level error \
@@ -272,15 +254,12 @@ jobs:
           --pre-hook-args "longhornio/longhorn-share-manager:${{ steps.var.outputs.tag }}"
           --pre-hook-args "longhornio/backing-image-manager:${{ steps.var.outputs.tag }}"
           --pre-hook-args "longhornio/longhorn-ui:${{ steps.var.outputs.tag }}"
+          --pre-hook-args "longhornio/longhorn-cli:${{ steps.var.outputs.tag }}"
           --artifacts ./longhorn.yaml
           --artifacts ./longhorn-images.txt
           --artifacts ./charts.tar.gz
           --pre-release
           --draft
         )
-
-        if [ "${{ steps.var.outputs.branch }}" != "v1.6.x" ]; then
-          common_args+=(--pre-hook-args "longhornio/longhorn-cli:${{ steps.var.outputs.tag }}")
-        fi
 
         renote release "${common_args[@]}"
