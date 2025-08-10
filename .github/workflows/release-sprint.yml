@@ -102,7 +102,7 @@ jobs:
                "longhorn-share-manager"
                "backing-image-manager"
                "longhorn-ui"
-               "longhorn",
+               "longhorn"
                "cli")
         
         for repo in "${repos[@]}"; do
