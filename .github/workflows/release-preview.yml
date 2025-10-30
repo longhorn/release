@@ -172,6 +172,7 @@ jobs:
         common_args=(
           --owner longhorn
           --repo longhorn
+          --ticket-sources longhorn/longhorn
           --branch ${{ steps.var.outputs.branch }}
           --tag ${{ steps.var.outputs.tag }}
           --milestone ${{ steps.var.outputs.milestone }}
