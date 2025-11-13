@@ -8,8 +8,7 @@
     "master",
     "main",
     "v1.10.x",
-    "v1.9.x",
-    "v1.8.x"
+    "v1.9.x"
   ],
   "automergeMajor": false,
   "dockerfile": {
@@ -191,23 +190,6 @@
         "github.com/longhorn/cli"
       ],
       "allowedVersions": "/^v1\\.9\\.\\S+/",
-      "matchManagers": [
-        "gomod"
-      ],
-      "groupName": "longhorn branch repo dependencies"
-    },
-    {
-      "matchBaseBranches": [
-        "v1.8.x"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/longhorn-engine",
-        "github.com/longhorn/longhorn-instance-manager",
-        "github.com/longhorn/longhorn-share-manager",
-        "github.com/longhorn/backing-image-manager",
-        "github.com/longhorn/cli"
-      ],
-      "allowedVersions": "/^v1\\.8\\.\\S+/",
       "matchManagers": [
         "gomod"
       ],
