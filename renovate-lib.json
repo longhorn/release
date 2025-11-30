@@ -69,6 +69,12 @@
       ],
       "automerge": true,
       "groupName": "docker dependencies"
+    },
+    {
+      "matchPackageNames": [
+        "github.com/longhorn/beszel"
+      ],
+      "enabled": false
     }
   ]
 }
