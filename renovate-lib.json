@@ -71,7 +71,11 @@
       "groupName": "docker dependencies"
     },
     {
+      "matchManagers": [
+        "gomod"
+      ],
       "matchPackageNames": [
+        "github.com/henrygd/beszel",
         "github.com/longhorn/beszel"
       ],
       "enabled": false
