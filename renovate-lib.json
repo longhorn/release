@@ -87,7 +87,9 @@
         "gomod"
       ],
       "matchPackagePatterns": [
-        "^github\\.com/longhorn/beszel"
+        "github.com/longhorn/beszel",
+        "github.com/henrygd/beszel",
+        "beszel"
       ],
       "enabled": false
     }
