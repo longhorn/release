@@ -29,11 +29,22 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "major",
-        "minor"
+      "matchPackagePatterns": [
+        "beszel"
       ],
       "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "go"
+      ],
+      "allowedVersions": "<=1.22"
+    },
+    {
+      "matchPackageNames": [
+        "github.com/rancher/dynamiclistener"
+      ],
+      "allowedVersions": "<0.7.1 || >0.7.1"
     },
     {
       "matchUpdateTypes": [
@@ -54,44 +65,11 @@
       "groupName": "patch digest dependencies"
     },
     {
-      "matchPackageNames": [
-        "go"
-      ],
-      "allowedVersions": "<=1.22"
-    },
-    {
-      "matchPackageNames": [
-        "github.com/rancher/dynamiclistener"
-      ],
-      "allowedVersions": "<0.7.1 || >0.7.1"
-    },
-    {
       "matchDatasources": [
         "docker"
       ],
       "automerge": true,
       "groupName": "docker dependencies"
-    },
-    {
-      "matchManagers": [
-        "gomod"
-      ],
-      "matchPackageNames": [
-        "github.com/longhorn/beszel",
-        "github.com/henrygd/beszel"
-      ],
-      "enabled": false
-    },
-    {
-      "matchManagers": [
-        "gomod"
-      ],
-      "matchPackagePatterns": [
-        "github.com/longhorn/beszel",
-        "github.com/henrygd/beszel",
-        "beszel"
-      ],
-      "enabled": false
     }
   ]
 }
