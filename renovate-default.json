@@ -110,6 +110,17 @@
       "enabled": false
     },
     {
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackagePatterns": [
+        "github.com/longhorn/beszel",
+        "github.com/henrygd/beszel",
+        "beszel"
+      ],
+      "enabled": false
+    },
+    {
       "matchBaseBranches": [
         "master",
         "main"
