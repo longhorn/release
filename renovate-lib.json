@@ -21,7 +21,9 @@
     "after 10am on saturday",
     "on sunday"
   ],
-  "postUpdateOptions": ["gomodTidy"],
+  "postUpdateOptions": [
+    "gomodTidy"
+  ],
   "vulnerabilityAlerts": {
     "automerge": true
   },
@@ -75,8 +77,17 @@
         "gomod"
       ],
       "matchPackageNames": [
-        "github.com/henrygd/beszel",
-        "github.com/longhorn/beszel"
+        "github.com/longhorn/beszel",
+        "github.com/henrygd/beszel"
+      ],
+      "enabled": false
+    },
+    {
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackagePatterns": [
+        "^github\\.com/longhorn/beszel"
       ],
       "enabled": false
     }
