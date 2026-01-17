@@ -21,30 +21,17 @@
     "after 10am on saturday",
     "on sunday"
   ],
-  "postUpdateOptions": [
-    "gomodTidy"
-  ],
+  "postUpdateOptions": ["gomodTidy"],
   "vulnerabilityAlerts": {
     "automerge": true
   },
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "beszel"
+      "matchUpdateTypes": [
+        "major",
+        "minor"
       ],
       "enabled": false
-    },
-    {
-      "matchPackageNames": [
-        "go"
-      ],
-      "allowedVersions": "<=1.22"
-    },
-    {
-      "matchPackageNames": [
-        "github.com/rancher/dynamiclistener"
-      ],
-      "allowedVersions": "<0.7.1 || >0.7.1"
     },
     {
       "matchUpdateTypes": [
@@ -63,6 +50,18 @@
       ],
       "automerge": true,
       "groupName": "patch digest dependencies"
+    },
+    {
+      "matchPackageNames": [
+        "go"
+      ],
+      "allowedVersions": "<=1.22"
+    },
+    {
+      "matchPackageNames": [
+        "github.com/rancher/dynamiclistener"
+      ],
+      "allowedVersions": "<0.7.1 || >0.7.1"
     },
     {
       "matchDatasources": [
