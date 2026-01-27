@@ -167,7 +167,7 @@
         "github.com/longhorn/backing-image-manager",
         "github.com/longhorn/cli"
       ],
-      "allowedVersions": "/^v1\\.9\\.\\S+/",
+      "allowedVersions": "/^v1\\.12\\.\\S+/",
       "matchManagers": [
         "gomod"
       ],
