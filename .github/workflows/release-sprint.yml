@@ -34,7 +34,7 @@ jobs:
         python -m pip install requests
 
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
     - name: Check sprint build is required
       id: check_sprint_build_required
@@ -79,10 +79,10 @@ jobs:
         git config --global user.name "David Ko"
       if: steps.check_sprint_build_required.outcome == 'success'
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       if: steps.check_sprint_build_required.outcome == 'success'
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       with:
         repository: innobead/renote
         ref: main
