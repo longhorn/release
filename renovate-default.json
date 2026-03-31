@@ -31,6 +31,9 @@
   },
   "packageRules": [
     {
+      "minimumReleaseAge": "2 weeks"
+    },
+    {
       "matchUpdateTypes": [
         "major"
       ],
