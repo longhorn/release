@@ -98,6 +98,7 @@ jobs:
       run: |
         repos=("longhorn-manager"
                "longhorn-engine"
+               "longhorn-spdk-engine"
                "longhorn-instance-manager"
                "longhorn-share-manager"
                "backing-image-manager"
@@ -159,6 +160,7 @@ jobs:
           --longhorn-chart-repo charts
           --longhorn-repos longhorn-manager
           --longhorn-repos longhorn-engine
+          --longhorn-repos longhorn-spdk-engine
           --longhorn-repos longhorn-instance-manager
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
@@ -186,6 +188,7 @@ jobs:
           --tag "${{ steps.var.outputs.tag }}"
           --repos longhorn-manager
           --repos longhorn-engine
+          --repos longhorn-spdk-engine
           --repos longhorn-instance-manager
           --repos longhorn-share-manager
           --repos backing-image-manager
@@ -204,6 +207,7 @@ jobs:
         repos=(
           longhorn-manager
           longhorn-engine
+          longhorn-spdk-engine
           longhorn-instance-manager
           longhorn-share-manager
           backing-image-manager

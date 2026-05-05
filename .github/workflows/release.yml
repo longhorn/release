@@ -80,6 +80,7 @@ jobs:
           --longhorn-chart-repo charts
           --longhorn-repos longhorn-manager
           --longhorn-repos longhorn-engine
+          --longhorn-repos longhorn-spdk-engine
           --longhorn-repos longhorn-instance-manager
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
@@ -106,6 +107,7 @@ jobs:
           --create-version-file
           --version-file-repos longhorn-manager
           --version-file-repos longhorn-engine
+          --version-file-repos longhorn-spdk-engine
           --version-file-repos longhorn-instance-manager
           --version-file-repos longhorn-share-manager
           --version-file-repos backing-image-manager
@@ -123,6 +125,7 @@ jobs:
         repos=(
           longhorn-manager
           longhorn-engine
+          longhorn-spdk-engine
           longhorn-instance-manager
           longhorn-share-manager
           backing-image-manager
