@@ -73,6 +73,7 @@ jobs:
           --version-file-repos longhorn-engine \
           --version-file-repos longhorn-instance-manager \
           --version-file-repos longhorn-share-manager \
+          --version-file-repos longhorn-spdk-engine \
           --version-file-repos backing-image-manager \
           --version-file-repos longhorn-ui \
           --version-file-repos cli \
