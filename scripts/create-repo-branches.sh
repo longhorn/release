@@ -17,13 +17,13 @@ repos=(
   "longhorn/longhorn-manager"
   "longhorn/longhorn-instance-manager"
   "longhorn/longhorn-engine"
+  "longhorn/longhorn-spdk-engine"
   "longhorn/longhorn-share-manager"
   "longhorn/backing-image-manager"
   "longhorn/longhorn-ui"
   "longhorn/longhorn-tests"
   "longhorn/cli"
   "longhorn/dep-versions"
-  # "longhorn/longhorn-spdk-engine" only needed since GA
 )
 
 function teardown() {
