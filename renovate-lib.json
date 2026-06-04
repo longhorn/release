@@ -56,12 +56,6 @@
     },
     {
       "matchPackageNames": [
-        "go"
-      ],
-      "allowedVersions": "<=1.22"
-    },
-    {
-      "matchPackageNames": [
         "github.com/rancher/dynamiclistener"
       ],
       "allowedVersions": "<0.7.1 || >0.7.1"
