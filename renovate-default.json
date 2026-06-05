@@ -194,6 +194,22 @@
     },
     {
       "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "enabled": true,
+      "groupName": "golang version dependencies"
+    },
+    {
+      "matchBaseBranches": [
         "master",
         "main",
         "/^v\\d+\\.\\d+\\.x/"
