@@ -35,6 +35,23 @@
       "minimumReleaseAge": "2 weeks"
     },
     {
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ],
+      "enabled": true
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
       "matchUpdateTypes": [
         "major"
       ],
@@ -45,9 +62,9 @@
         "major"
       ],
       "matchManagers": [
-        "gomod",
         "dockerfile"
-      ]
+      ],
+      "enabled": true
     },
     {
       "matchBaseBranches": [
@@ -123,6 +140,34 @@
         "beszel"
       ],
       "enabled": false
+    },
+    {
+      "matchBaseBranches": [
+        "master",
+        "main"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "major dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "master",
+        "main"
+      ],
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ],
+      "groupName": "golang version dependencies"
     },
     {
       "matchBaseBranches": [
