@@ -29,6 +29,12 @@
     {
       "minimumReleaseAge": "2 weeks"
     },
+  {
+    "matchDatasources": ["golang-version"],
+    "matchUpdateTypes": ["patch"],
+    "automerge": true,
+    "rangeStrategy": "bump"
+  },
     {
       "matchUpdateTypes": [
         "major",
