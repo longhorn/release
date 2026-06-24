@@ -89,6 +89,9 @@ jobs:
           --longhorn-repos dep-versions
           --merge
         )
+        if [ "${{ steps.var.outputs.branch }}" == "v1.11.x" ]; then
+          common_args+=(--longhorn-repos longhorn-spdk-engine)
+        fi
 
         renote pr "${common_args[@]}"
 
@@ -126,7 +129,6 @@ jobs:
         repos=(
           longhorn-manager
           longhorn-engine
-          longhorn-spdk-engine
           longhorn-instance-manager
           longhorn-share-manager
           backing-image-manager
@@ -134,7 +136,9 @@ jobs:
           longhorn
           cli
         )
-
+        if [ "${{ steps.var.outputs.branch }}" == "v1.11.x" ]; then
+          repos+=(longhorn-spdk-engine)
+        fi
         output=$(renote changelog \
           --owner longhorn \
           --branch ${{ steps.var.outputs.branch }} \
@@ -150,7 +154,6 @@ jobs:
         repos=(
           longhorn-manager
           longhorn-engine
-          longhorn-spdk-engine
           longhorn-instance-manager
           longhorn-share-manager
           backing-image-manager
@@ -158,7 +161,9 @@ jobs:
           longhorn
           cli
         )
-
+        if [ "${{ steps.var.outputs.branch }}" == "v1.11.x" ]; then
+          repos+=(longhorn-spdk-engine)
+        fi
         output=$(renote changelog \
           --log-level error \
           --owner longhorn \
