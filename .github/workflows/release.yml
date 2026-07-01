@@ -80,7 +80,6 @@ jobs:
           --longhorn-chart-repo charts
           --longhorn-repos longhorn-manager
           --longhorn-repos longhorn-engine
-          --longhorn-repos longhorn-spdk-engine
           --longhorn-repos longhorn-instance-manager
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
@@ -89,7 +88,9 @@ jobs:
           --longhorn-repos cli:longhorn-cli
           --merge
         )
-
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          common_args+=(--longhorn-repos longhorn-spdk-engine)
+        fi
         renote pr "${common_args[@]}"
 
     - id: artifact
@@ -107,7 +108,6 @@ jobs:
           --create-version-file
           --version-file-repos longhorn-manager
           --version-file-repos longhorn-engine
-          --version-file-repos longhorn-spdk-engine
           --version-file-repos longhorn-instance-manager
           --version-file-repos longhorn-share-manager
           --version-file-repos backing-image-manager
@@ -116,7 +116,9 @@ jobs:
           --version-file-repos dep-versions
           --force
         )
-
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          common_args+=(--version-file-repos longhorn-spdk-engine)
+        fi
         renote tag "${common_args[@]}"
 
     - id: changelog
@@ -125,7 +127,6 @@ jobs:
         repos=(
           longhorn-manager
           longhorn-engine
-          longhorn-spdk-engine
           longhorn-instance-manager
           longhorn-share-manager
           backing-image-manager
@@ -133,7 +134,9 @@ jobs:
           longhorn
           cli
         )
-
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          repos+=(longhorn-spdk-engine)
+        fi
         output=$(renote changelog \
           --log-level error \
           --owner longhorn \
