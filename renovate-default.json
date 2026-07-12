@@ -50,7 +50,7 @@
     },
     {
       "matchBaseBranches": [
-        "/^v\\d+\\.\\d+\\.x/"
+        "/^v1\\.(9|10|11)\\.x$/"
       ],
       "matchUpdateTypes": [
         "major"
