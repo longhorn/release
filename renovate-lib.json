@@ -77,6 +77,21 @@
       ],
       "automerge": true,
       "groupName": "docker dependencies"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "matchFileNames": [
+        "package/Dockerfile"
+      ],
+      "matchPackageNames": [
+        "registry.suse.com/bci/bci-base"
+      ],
+      "allowedVersions": "/^15\\.7$/"
     }
   ]
 }
