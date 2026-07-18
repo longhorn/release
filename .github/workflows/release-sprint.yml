@@ -98,14 +98,15 @@ jobs:
       run: |
         repos=("longhorn-manager"
                "longhorn-engine"
-               "longhorn-spdk-engine"
                "longhorn-instance-manager"
                "longhorn-share-manager"
                "backing-image-manager"
                "longhorn-ui"
                "longhorn"
                "cli")
-        
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          repos+=(longhorn-spdk-engine)
+        fi
         for repo in "${repos[@]}"; do
           exists=$(gh api "repos/longhorn/${repo}/git/refs/tags/${{ steps.var.outputs.prev_tag }}" > /dev/null 2>&1; echo $?)
           echo "Tag ${{ steps.var.outputs.prev_tag }} already exists: ${exists}"
@@ -160,7 +161,6 @@ jobs:
           --longhorn-chart-repo charts
           --longhorn-repos longhorn-manager
           --longhorn-repos longhorn-engine
-          --longhorn-repos longhorn-spdk-engine
           --longhorn-repos longhorn-instance-manager
           --longhorn-repos longhorn-share-manager
           --longhorn-repos backing-image-manager
@@ -169,7 +169,9 @@ jobs:
           --longhorn-repos dep-versions
           --dryrun
         )
-
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          common_args+=(--longhorn-repos longhorn-spdk-engine)
+        fi
         renote pr "${common_args[@]}"
 
     - id: artifact
@@ -188,7 +190,6 @@ jobs:
           --tag "${{ steps.var.outputs.tag }}"
           --repos longhorn-manager
           --repos longhorn-engine
-          --repos longhorn-spdk-engine
           --repos longhorn-instance-manager
           --repos longhorn-share-manager
           --repos backing-image-manager
@@ -197,7 +198,9 @@ jobs:
           --repos cli
           --repos dep-versions
         )
-
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          common_args+=(--longhorn-repos longhorn-spdk-engine)
+        fi
         renote tag "${common_args[@]}"
 
     - id: changelog
@@ -207,7 +210,6 @@ jobs:
         repos=(
           longhorn-manager
           longhorn-engine
-          longhorn-spdk-engine
           longhorn-instance-manager
           longhorn-share-manager
           backing-image-manager
@@ -215,7 +217,9 @@ jobs:
           longhorn
           cli
         )
-
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+          repos+=(longhorn-spdk-engine)
+        fi
         output=$(renote changelog \
           --log-level error \
           --owner longhorn \
