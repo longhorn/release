@@ -25,13 +25,11 @@
     "after 1pm on sunday"
   ],
   "postUpdateOptions": ["gomodTidy"],
+  "minimumReleaseAge": "2 weeks",
   "vulnerabilityAlerts": {
     "automerge": true
   },
   "packageRules": [
-    {
-      "minimumReleaseAge": "2 weeks"
-    },
     {
       "matchDatasources": [
         "golang-version"
@@ -287,6 +285,16 @@
         "registry.suse.com/bci/bci-base"
       ],
       "allowedVersions": "/^15\\.7$/"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "minimumReleaseAge": "0 days"
     }
   ]
 }
+
