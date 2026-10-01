@@ -223,6 +223,7 @@
         "main"
       ],
       "matchPackageNames": [
+        "github.com/longhorn/longhorn-manager",
         "github.com/longhorn/longhorn-engine",
         "github.com/longhorn/longhorn-spdk-engine",
         "github.com/longhorn/longhorn-instance-manager",
@@ -241,6 +242,7 @@
         "v1.13.x"
       ],
       "matchPackageNames": [
+        "github.com/longhorn/longhorn-manager",
         "github.com/longhorn/longhorn-engine",
         "github.com/longhorn/longhorn-spdk-engine",
         "github.com/longhorn/longhorn-instance-manager",
@@ -259,6 +261,7 @@
         "v1.12.x"
       ],
       "matchPackageNames": [
+        "github.com/longhorn/longhorn-manager",
         "github.com/longhorn/longhorn-engine",
         "github.com/longhorn/longhorn-spdk-engine",
         "github.com/longhorn/longhorn-instance-manager",
@@ -277,6 +280,7 @@
         "v1.11.x"
       ],
       "matchPackageNames": [
+        "github.com/longhorn/longhorn-manager",
         "github.com/longhorn/longhorn-engine",
         "github.com/longhorn/longhorn-instance-manager",
         "github.com/longhorn/longhorn-share-manager",
