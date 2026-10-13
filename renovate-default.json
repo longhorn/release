@@ -25,8 +25,11 @@
   "schedule": [
     "after 1pm on sunday"
   ],
-  "postUpdateOptions": ["gomodTidy"],
+  "postUpdateOptions": [
+    "gomodTidy"
+  ],
   "minimumReleaseAge": "2 weeks",
+  "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "automerge": true
   },
@@ -319,4 +322,3 @@
     }
   ]
 }
-
