@@ -21,15 +21,21 @@
     "after 10am on saturday",
     "on sunday"
   ],
-  "postUpdateOptions": ["gomodTidy"],
+  "postUpdateOptions": [
+    "gomodTidy"
+  ],
   "minimumReleaseAge": "2 weeks",
   "vulnerabilityAlerts": {
     "automerge": true
   },
   "packageRules": [
     {
-      "matchDatasources": ["golang-version"],
-      "matchUpdateTypes": ["patch"],
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true,
       "rangeStrategy": "bump"
     },
@@ -42,13 +48,21 @@
     },
     {
       "matchUpdateTypes": [
-        "major",
         "minor"
       ],
       "matchManagers": [
-        "gomod",
-        "dockerfile"
-      ]
+        "gomod"
+      ],
+      "enabled": true
+    },
+    {
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "enabled": true
     },
     {
       "matchUpdateTypes": [
@@ -57,11 +71,6 @@
       ],
       "automerge": true,
       "groupName": "patch digest dependencies"
-    },
-    {
-      "matchPackageNames": [
-        "go"
-      ]
     },
     {
       "matchPackageNames": [
@@ -99,6 +108,20 @@
         "digest"
       ],
       "minimumReleaseAge": "0 days"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "golang"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "enabled": true,
+      "automerge": false,
+      "groupName": "golang image minor"
     }
   ]
 }
