@@ -25,6 +25,7 @@
     "gomodTidy"
   ],
   "minimumReleaseAge": "2 weeks",
+  "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "automerge": true
   },
