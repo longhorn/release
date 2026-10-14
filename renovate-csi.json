@@ -1,0 +1,147 @@
+{
+  "base": {
+    "description": [
+      "Shared config for Longhorn CSI sidecar forks: go.mod security updates and Go version in release-tools/prow.sh"
+    ],
+    "extends": [
+      "config:best-practices",
+      "security:openssf-scorecard"
+    ],
+    "enabledManagers": [
+      "gomod",
+      "custom.regex"
+    ],
+    "semanticCommits": "enabled",
+    "semanticCommitType": "chore",
+    "semanticCommitScope": "deps",
+    "prHourlyLimit": 12,
+    "timezone": "Asia/Taipei",
+    "schedule": [
+      "after 1pm on sunday"
+    ],
+    "postUpdateOptions": [
+      "gomodTidy"
+    ],
+    "minimumReleaseAge": "2 weeks",
+    "osvVulnerabilityAlerts": true,
+    "vulnerabilityAlerts": {
+      "enabled": true,
+      "automerge": true
+    },
+    "customManagers": [
+      {
+        "customType": "regex",
+        "description": [
+          "Update CSI_PROW_GO_VERSION_BUILD in release-tools/prow.sh"
+        ],
+        "managerFilePatterns": [
+          "/(^|/)release-tools/prow\\.sh$/"
+        ],
+        "matchStrings": [
+          "configvar CSI_PROW_GO_VERSION_BUILD \"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
+        ],
+        "depNameTemplate": "go",
+        "datasourceTemplate": "golang-version",
+        "versioningTemplate": "semver"
+      }
+    ],
+    "packageRules": [
+      {
+        "description": [
+          "Only security updates for go.mod (vulnerabilityAlerts re-enables vulnerable deps)"
+        ],
+        "matchManagers": [
+          "gomod"
+        ],
+        "enabled": false
+      },
+      {
+        "description": [
+          "Only patch updates for the Go version used by prow.sh"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDatasources": [
+          "golang-version"
+        ],
+        "matchUpdateTypes": [
+          "major",
+          "minor"
+        ],
+        "enabled": false
+      },
+      {
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDatasources": [
+          "golang-version"
+        ],
+        "matchUpdateTypes": [
+          "patch"
+        ],
+        "automerge": true,
+        "groupName": "golang version dependencies"
+      }
+    ]
+  },
+  "livenessprobe": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-2.20"
+    ]
+  },
+  "csi-snapshotter": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-8.7"
+    ]
+  },
+  "csi-node-driver-registrar": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-2.18"
+    ]
+  },
+  "csi-attacher": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-4.13"
+    ]
+  },
+  "csi-health-monitor": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-0.19"
+    ]
+  },
+  "csi-provisioner": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-6.4",
+      "release-5.3"
+    ]
+  },
+  "csi-resizer": {
+    "extends": [
+      "github>longhorn/release:renovate-csi/base"
+    ],
+    "baseBranchPatterns": [
+      "release-2.3",
+      "release-1.4"
+    ]
+  }
+}
