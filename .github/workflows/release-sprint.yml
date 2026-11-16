@@ -2,7 +2,6 @@ name: Release - Sprint
 
 on:
   workflow_dispatch:
-    inputs:
   schedule:
     - cron: '0 1 * * 0' # every Sunday at 01:00 UTC (Asia/Taipei 09:00)
 
@@ -40,6 +39,11 @@ jobs:
       id: check_sprint_build_required
       continue-on-error: true
       run: |
+        if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+          echo "Manual trigger: skip sprint date check and force release"
+          exit 0
+        fi
+
         python ./scripts/check-sprint-last-day.py "longhorn" "longhorn" "Longhorn Sprint"
 
     - id: var
@@ -49,10 +53,10 @@ jobs:
         branch="${tokens[0]}"
         tag="${tokens[1]}-dev-$(date '+%Y%m%d')"
         milestone="${tokens[2]}"
-  
+
         current_date=$(date '+%Y%m%d')
         prev_sprint_end_date=$(date -d "${current_date} - 14 days" '+%Y%m%d')
-  
+
         prev_tag="${tokens[1]}-dev-${prev_sprint_end_date}"
 
         if [ -z "${tokens[2]}" ]; then milestone="${tokens[1]}" ; fi
@@ -68,7 +72,7 @@ jobs:
         prev_tag=${prev_tag}
         milestone=${milestone}
         EOF
-  
+
     - name: Setup Git
       if: steps.check_sprint_build_required.outcome == 'success'
       run: |
@@ -199,7 +203,7 @@ jobs:
           --repos dep-versions
         )
         if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
-          common_args+=(--longhorn-repos longhorn-spdk-engine)
+          common_args+=(--repos longhorn-spdk-engine)
         fi
         renote tag "${common_args[@]}"
 
@@ -272,3 +276,4 @@ jobs:
         )
 
         renote release "${common_args[@]}"
+
