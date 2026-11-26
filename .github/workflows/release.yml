@@ -88,7 +88,7 @@ jobs:
           --longhorn-repos cli:longhorn-cli
           --merge
         )
-        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ] && [ "${{ steps.var.outputs.branch }}" != "v1.10.x" ]; then
           common_args+=(--longhorn-repos longhorn-spdk-engine)
         fi
         renote pr "${common_args[@]}"
@@ -116,7 +116,7 @@ jobs:
           --version-file-repos dep-versions
           --force
         )
-        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ] && [ "${{ steps.var.outputs.branch }}" != "v1.10.x" ]; then
           common_args+=(--version-file-repos longhorn-spdk-engine)
         fi
         renote tag "${common_args[@]}"
@@ -134,7 +134,7 @@ jobs:
           longhorn
           cli
         )
-        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ]; then
+        if [ "${{ steps.var.outputs.branch }}" != "v1.11.x" ] && [ "${{ steps.var.outputs.branch }}" != "v1.10.x" ]; then
           repos+=(longhorn-spdk-engine)
         fi
         output=$(renote changelog \
